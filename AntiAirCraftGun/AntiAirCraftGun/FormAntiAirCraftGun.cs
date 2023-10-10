@@ -102,6 +102,10 @@ namespace AntiAircraftGun
             random.Next(0, 256)),
             Color.FromArgb(random.Next(0, 256), random.Next(0, 256),//доп. цвет
             random.Next(0, 256)),
+            
+            Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256)), // Доп. цвет2
+            Convert.ToBoolean(random.Next(2)), // Rocket
+            Convert.ToBoolean(random.Next(2)), // Radar
 
             pictureBoxAntiAircraftGun.Width, pictureBoxAntiAircraftGun.Height);
             _drawing.SetPosition(random.Next(10, 100),

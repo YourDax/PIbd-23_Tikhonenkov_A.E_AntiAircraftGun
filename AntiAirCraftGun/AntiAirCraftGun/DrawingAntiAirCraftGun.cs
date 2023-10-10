@@ -52,13 +52,13 @@ namespace AntiAircraftGun
         /// <returns>true - объект создан, false - проверка не пройдена,
         ///нельзя создать объект в этих размерах</returns>
         public bool Init(int speed, double weight, Color bodyColor, Color
-        additionalColor, int width, int height)
+        additionalColor, Color dopColor, bool rocket, bool radar, int width, int height)
         {
             // TODO: Продумать проверки
             _pictureWidth = width;
             _pictureHeight = height;
             AntiAircraftGun = new EntityAntiAircraftGun();
-            AntiAircraftGun.Init(speed, weight, bodyColor, additionalColor);
+            AntiAircraftGun.Init(speed, weight, bodyColor, additionalColor,dopColor,rocket,radar);
             return true;
         }
         /// <summary>
@@ -136,30 +136,42 @@ namespace AntiAircraftGun
             Brush bodyBrush = new SolidBrush(AntiAircraftGun.BodyColor);
             Brush additionalBrush = new SolidBrush(AntiAircraftGun.AdditionalColor);
 
-            // Нарисовать гусеницы
+            
             g.FillEllipse(additionalBrush, _startPosX, _startPosY+40, 110, 10);
             g.DrawEllipse(pen, _startPosX, _startPosY+40, 110, 10);
             g.FillRectangle(bodyBrush, _startPosX, _startPosY+30, 110, 10);
             g.DrawRectangle(pen, _startPosX, _startPosY+30, 110, 10);
             g.FillRectangle(bodyBrush, _startPosX+80, _startPosY+10, 30, 20);
             g.DrawRectangle(pen, _startPosX+80, _startPosY+10, 30, 20);
-
-            points[0] = new Point(_startPosX, _startPosY+30);
-            points[1] = new Point(_startPosX+95, _startPosY+5);
-            points[2] = new Point(_startPosX+92, _startPosY);
-            points[3] = new Point(_startPosX, _startPosY+25);
-            g.FillPolygon(additionalBrush, points);
-            g.DrawPolygon(pen, points);
-            //g.DrawLine(pen, _startPosX, _startPosY+30, _startPosX+95,_startPosY+5 );
-            //g.DrawLine(pen, _startPosX+95, _startPosY+5, _startPosX+92, _startPosY);
-            //g.DrawLine(pen, _startPosX+92, _startPosY, _startPosX, _startPosY+26);
-            //g.DrawLine(pen, _startPosX, _startPosY+26, _startPosX, _startPosY+30);
             for (int i = 0; i < 4; i++)
             {
-                Rectangle trackRect = new Rectangle(_startPosX+20 + i*19, _startPosY+40,10, 10);
+                Rectangle trackRect = new Rectangle(_startPosX+20 + i*19, _startPosY+40, 10, 10);
                 g.DrawEllipse(pen, trackRect);
                 g.FillEllipse(Brushes.Black, trackRect);
             }
+
+
+            Brush dopBrush = new SolidBrush(AntiAircraftGun.DopColor);
+            Pen dopPen = new Pen(AntiAircraftGun.DopColor);
+            if (AntiAircraftGun.Rocket)
+            {
+                points[0] = new Point(_startPosX, _startPosY + 30);
+                points[1] = new Point(_startPosX + 95, _startPosY + 5);
+                points[2] = new Point(_startPosX + 92, _startPosY);
+                points[3] = new Point(_startPosX, _startPosY + 25);
+                g.FillPolygon(dopBrush, points);
+                g.DrawPolygon(pen, points);
+            }
+            if (AntiAircraftGun.Radar)
+            {
+                g.DrawLine(dopPen, _startPosX + 105, _startPosY + 20, _startPosX +105, _startPosY + 5);
+                g.FillPie(dopBrush, _startPosX + 81, _startPosY-15, 30, 30, -45, 180);
+                g.DrawLine(dopPen, _startPosX + 98, _startPosY, _startPosX + 93, _startPosY + 10);
+                g.FillEllipse(dopBrush, _startPosX + 88, _startPosY -10, 10, 10);
+            }
+            
+
+            
             
             
 

@@ -28,6 +28,12 @@ namespace AntiAircraftGun
         /// Шаг перемещения автомобиля
         /// </summary>
         public double Step => (double)Speed * 100 / Weight;
+
+        public Color DopColor { get; private set; }
+
+        public bool Rocket { get; private set; }
+
+        public bool Radar { get; private set; }
         /// <summary>
         /// Инициализация полей объекта-класса спортивного автомобиля
         /// </summary>
@@ -35,12 +41,15 @@ namespace AntiAircraftGun
         /// <param name="weight">Вес автомобиля</param>
         /// <param name="bodyColor">Основной цвет</param>
 
-        public void Init(int speed, double weight, Color bodyColor, Color additionalColor)
+        public void Init(int speed, double weight, Color bodyColor, Color additionalColor, Color dopColor, bool rocket, bool radar)
         {
             Speed = speed;
             Weight = weight;
             BodyColor = bodyColor;
             AdditionalColor = additionalColor;
+            DopColor = dopColor;
+            Rocket = rocket;
+            Radar = radar;
         }
     }
 }
