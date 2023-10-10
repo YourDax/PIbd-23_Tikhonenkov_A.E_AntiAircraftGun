@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntiAirCraftGun", "AntiAirCraftGun\AntiAirCraftGun.csproj", "{FB18B709-9154-45E0-8BD8-28822B29FB4B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB18B709-9154-45E0-8BD8-28822B29FB4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB18B709-9154-45E0-8BD8-28822B29FB4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB18B709-9154-45E0-8BD8-28822B29FB4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB18B709-9154-45E0-8BD8-28822B29FB4B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EB48B08E-3934-47B3-94AF-DF58D18CDB32}
+	EndGlobalSection
+EndGlobal
