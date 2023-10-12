@@ -28,11 +28,17 @@ namespace AntiAircraftGun
         /// Шаг перемещения автомобиля
         /// </summary>
         public double Step => (double)Speed * 100 / Weight;
-
+        /// <summary>
+        /// Цвет для доп. деталей
+        /// </summary>
         public Color DopColor { get; private set; }
-
+        /// <summary>
+        /// Ракета
+        /// </summary>
         public bool Rocket { get; private set; }
-
+        /// <summary>
+        /// Радар
+        /// </summary>
         public bool Radar { get; private set; }
         /// <summary>
         /// Инициализация полей объекта-класса спортивного автомобиля

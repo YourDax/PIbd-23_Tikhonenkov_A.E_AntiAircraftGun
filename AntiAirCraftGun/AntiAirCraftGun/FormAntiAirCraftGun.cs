@@ -37,11 +37,7 @@ namespace AntiAircraftGun
         
 
         
-        /// <summary>
-        /// Изменение размеров формы
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
 
         private void pictureBoxZenit_Click(object sender, EventArgs e)
 		    {
@@ -62,11 +58,7 @@ namespace AntiAircraftGun
             pictureBoxAntiAircraftGun.Image = bmp;
         }
        
-        /// <summary>
-        /// Изменение размеров формы
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         private void ButtonMove_Click(object sender, EventArgs e)
         {
             if (_drawing == null)
@@ -91,8 +83,7 @@ namespace AntiAircraftGun
             }
             Draw();
         }
-
-        private void Create_Click_1(object sender, EventArgs e)
+        private void buttonCreate_Click(object sender, EventArgs e) 
         {
             Random random = new();
             _drawing = new DrawingAntiAirCraftGun();
@@ -102,7 +93,7 @@ namespace AntiAircraftGun
             random.Next(0, 256)),
             Color.FromArgb(random.Next(0, 256), random.Next(0, 256),//доп. цвет
             random.Next(0, 256)),
-            
+
             Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256)), // Доп. цвет2
             Convert.ToBoolean(random.Next(2)), // Rocket
             Convert.ToBoolean(random.Next(2)), // Radar
@@ -111,8 +102,9 @@ namespace AntiAircraftGun
             _drawing.SetPosition(random.Next(10, 100),
             random.Next(10, 100));
 
-            
+
             Draw();
         }
+        
     }
 }

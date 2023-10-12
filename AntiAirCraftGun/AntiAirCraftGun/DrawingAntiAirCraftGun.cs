@@ -35,11 +35,11 @@ namespace AntiAircraftGun
         /// <summary>
         /// Ширина прорисовки автомобиля
         /// </summary>
-        private readonly int _carWidth = 110;
+        private readonly int _zenitWidth = 110;
         /// <summary>
         /// Высота прорисовки автомобиля
         /// </summary>
-        private readonly int _carHeight = 60;
+        private readonly int _zenitHeight = 60;
         /// <summary>
         /// Инициализация свойств
         /// </summary>
@@ -54,7 +54,8 @@ namespace AntiAircraftGun
         public bool Init(int speed, double weight, Color bodyColor, Color
         additionalColor, Color dopColor, bool rocket, bool radar, int width, int height)
         {
-            // TODO: Продумать проверки
+            if (width <= _zenitWidth || height <= _zenitHeight) return false;
+
             _pictureWidth = width;
             _pictureHeight = height;
             AntiAircraftGun = new EntityAntiAircraftGun();
@@ -68,9 +69,14 @@ namespace AntiAircraftGun
         /// <param name="y">Координата Y</param>
         public void SetPosition(int x, int y)
         {
-            // TODO: Изменение x, y
+            if (AntiAircraftGun == null) return;
             _startPosX = x;
             _startPosY = y;
+            if (x + _zenitWidth >= _pictureWidth || y + _zenitHeight>= _pictureHeight)
+            {
+                _startPosX = 1;
+                _startPosY = 1;
+            }
         }
         /// <summary>
         /// Изменение направления перемещения
@@ -82,14 +88,6 @@ namespace AntiAircraftGun
             {
                 return;
             }
-            
-            FormAntiAirCraftGun form1 = new FormAntiAirCraftGun();
-            Size windowSize = form1.Size;
-            int windowWidth = windowSize.Width;
-            int windowHeight = windowSize.Height;
-
-            // Теперь вы можете получить ширину и высоту отдельно, если это необходимо
-
             switch (direction)
             {
                 //влево
@@ -108,14 +106,14 @@ namespace AntiAircraftGun
                     break;
                 // вправо
                 case DirectionType.Right:
-                    if (_startPosX + AntiAircraftGun.Step < windowWidth-150)
+                    if (_startPosX + AntiAircraftGun.Step < _pictureWidth-110)
                     {
                         _startPosX += (int)AntiAircraftGun.Step;
                     }
                     break;
                 //вниз
                 case DirectionType.Down:
-                    if (_startPosY + AntiAircraftGun.Step < windowHeight-100)
+                    if (_startPosY + AntiAircraftGun.Step < _pictureHeight-60)
                     {
                         _startPosY += (int)AntiAircraftGun.Step;
                     }
@@ -149,8 +147,6 @@ namespace AntiAircraftGun
                 g.DrawEllipse(pen, trackRect);
                 g.FillEllipse(Brushes.Black, trackRect);
             }
-
-
             Brush dopBrush = new SolidBrush(AntiAircraftGun.DopColor);
             Pen dopPen = new Pen(AntiAircraftGun.DopColor);
             if (AntiAircraftGun.Rocket)
@@ -169,12 +165,6 @@ namespace AntiAircraftGun
                 g.DrawLine(dopPen, _startPosX + 98, _startPosY, _startPosX + 93, _startPosY + 10);
                 g.FillEllipse(dopBrush, _startPosX + 88, _startPosY -10, 10, 10);
             }
-            
-
-            
-            
-            
-
         }
     }
 }

@@ -2,34 +2,34 @@
 {
 	partial class FormAntiAirCraftGun
 	{
-		/// <summary>
-		///  Required designer variable.
-		/// </summary>
-		private System.ComponentModel.IContainer components = null;
+        /// <summary>
+        ///  Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-		/// <summary>
-		///  Clean up any resources being used.
-		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing && (components != null))
-			{
-				components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+        /// <summary>
+        ///  Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-		#region Windows Form Designer generated code
+        #region Windows Form Designer generated code
 
-		/// <summary>
-		///  Required method for Designer support - do not modify
-		///  the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        /// <summary>
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             this.pictureBoxAntiAircraftGun = new System.Windows.Forms.PictureBox();
-            this.Create = new System.Windows.Forms.Button();
+            this.buttonCreate = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
@@ -47,16 +47,16 @@
             this.pictureBoxAntiAircraftGun.TabIndex = 0;
             this.pictureBoxAntiAircraftGun.TabStop = false;
             // 
-            // Create
+            // buttonCreate
             // 
-            this.Create.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Create.Location = new System.Drawing.Point(32, 577);
-            this.Create.Name = "Create";
-            this.Create.Size = new System.Drawing.Size(75, 23);
-            this.Create.TabIndex = 1;
-            this.Create.Text = "Создать";
-            this.Create.UseVisualStyleBackColor = true;
-            this.Create.Click += new System.EventHandler(this.Create_Click_1);
+            this.buttonCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonCreate.Location = new System.Drawing.Point(32, 577);
+            this.buttonCreate.Name = "buttonCreate";
+            this.buttonCreate.Size = new System.Drawing.Size(75, 23);
+            this.buttonCreate.TabIndex = 1;
+            this.buttonCreate.Text = "Создать";
+            this.buttonCreate.UseVisualStyleBackColor = true;
+            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
             // buttonLeft
             // 
@@ -106,7 +106,7 @@
             this.buttonDown.UseVisualStyleBackColor = true;
             this.buttonDown.Click += new System.EventHandler(this.ButtonMove_Click);
             // 
-            // Form1
+            // FormAntiAirCraftGun
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -115,23 +115,24 @@
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.buttonLeft);
-            this.Controls.Add(this.Create);
+            this.Controls.Add(this.buttonCreate);
             this.Controls.Add(this.pictureBoxAntiAircraftGun);
-            this.Name = "Form1";
+            this.Name = "FormAntiAirCraftGun";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAntiAircraftGun)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
-		}
+        }
 
-		#endregion
+        #endregion
 
-		private PictureBox pictureBoxAntiAircraftGun;
-		private Button Create;
-		private Button buttonLeft;
-		private Button buttonUp;
-		private Button buttonRight;
-		private Button buttonDown;
-	}
+        private PictureBox pictureBoxAntiAircraftGun;
+        private Button buttonCreate;
+        private Button buttonLeft;
+        private Button buttonUp;
+        private Button buttonRight;
+        private Button buttonDown;
+
+    }
 }
