@@ -121,5 +121,10 @@ namespace AntiAircraftGun
             }
 
         }
+
+        private void comboBoxStrategy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

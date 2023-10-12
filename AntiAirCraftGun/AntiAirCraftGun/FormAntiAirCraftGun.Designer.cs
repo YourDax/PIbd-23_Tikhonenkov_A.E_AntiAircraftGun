@@ -115,12 +115,12 @@
             this.comboBoxStrategy.FormattingEnabled = true;
             this.comboBoxStrategy.Items.AddRange(new object[] {
             "Двигаться в центер ",
-            "Двигаться в правый нижний угол",
-            "Двигаться к краю окна"});
+            "Двигаться в правый нижний угол"});
             this.comboBoxStrategy.Location = new System.Drawing.Point(1244, 28);
             this.comboBoxStrategy.Name = "comboBoxStrategy";
             this.comboBoxStrategy.Size = new System.Drawing.Size(170, 23);
             this.comboBoxStrategy.TabIndex = 6;
+            this.comboBoxStrategy.SelectedIndexChanged += new System.EventHandler(this.comboBoxStrategy_SelectedIndexChanged);
             // 
             // CreateAntiAirCraftGun
             // 
