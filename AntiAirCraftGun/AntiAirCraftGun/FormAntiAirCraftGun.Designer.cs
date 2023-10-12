@@ -37,6 +37,8 @@
             this.comboBoxStrategy = new System.Windows.Forms.ComboBox();
             this.CreateAntiAirCraftGun = new System.Windows.Forms.Button();
             this.Step = new System.Windows.Forms.Button();
+            this.ButtonSelectZenit = new System.Windows.Forms.Button();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAntiAircraftGun)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,7 +122,6 @@
             this.comboBoxStrategy.Name = "comboBoxStrategy";
             this.comboBoxStrategy.Size = new System.Drawing.Size(170, 23);
             this.comboBoxStrategy.TabIndex = 6;
-            this.comboBoxStrategy.SelectedIndexChanged += new System.EventHandler(this.comboBoxStrategy_SelectedIndexChanged);
             // 
             // CreateAntiAirCraftGun
             // 
@@ -142,11 +143,22 @@
             this.Step.UseVisualStyleBackColor = true;
             this.Step.Click += new System.EventHandler(this.ButtonStep_Click);
             // 
+            // ButtonSelectZenit
+            // 
+            this.ButtonSelectZenit.Location = new System.Drawing.Point(412, 577);
+            this.ButtonSelectZenit.Name = "ButtonSelectZenit";
+            this.ButtonSelectZenit.Size = new System.Drawing.Size(157, 23);
+            this.ButtonSelectZenit.TabIndex = 9;
+            this.ButtonSelectZenit.Text = "Выбрать объект";
+            this.ButtonSelectZenit.UseVisualStyleBackColor = true;
+            this.ButtonSelectZenit.Click += new System.EventHandler(this.ButtonSelectZenit_Click);
+            // 
             // FormAntiAirCraftGun
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1491, 628);
+            this.Controls.Add(this.ButtonSelectZenit);
             this.Controls.Add(this.Step);
             this.Controls.Add(this.CreateAntiAirCraftGun);
             this.Controls.Add(this.comboBoxStrategy);
@@ -157,7 +169,7 @@
             this.Controls.Add(this.CreateAdavancedAntiAirCraftGun);
             this.Controls.Add(this.pictureBoxAntiAircraftGun);
             this.Name = "FormAntiAirCraftGun";
-            this.Text = "Form1";
+            this.Text = "FormAntiAirCraftGun";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAntiAircraftGun)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -175,5 +187,7 @@
         private ComboBox comboBoxStrategy;
         private Button CreateAntiAirCraftGun;
         private Button Step;
+        private Button ButtonSelectZenit;
+        private ColorDialog colorDialog1;
     }
 }

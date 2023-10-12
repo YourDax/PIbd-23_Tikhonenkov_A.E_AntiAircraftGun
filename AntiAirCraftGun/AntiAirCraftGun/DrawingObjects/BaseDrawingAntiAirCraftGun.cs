@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AntiAircraftGun.Enitites;
+using AntiAircraftGun.MovementStrategy;
 
 namespace AntiAircraftGun.DrawingObjects
 {
@@ -140,5 +141,10 @@ namespace AntiAircraftGun.DrawingObjects
                 g.FillEllipse(Brushes.Black, trackRect);
             }
         }
+        /// <summary>
+        /// Получение объекта IMoveableObject из объекта DrawningCar
+        /// </summary>
+        public IMoveableObject GetMoveableObject => new DrawingObjectAntiAirCraftGun(this);
+
     }
 }

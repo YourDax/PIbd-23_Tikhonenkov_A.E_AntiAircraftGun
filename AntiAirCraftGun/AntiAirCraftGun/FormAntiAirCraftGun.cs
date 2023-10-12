@@ -1,5 +1,6 @@
 using AntiAircraftGun.DrawingObjects;
 using AntiAircraftGun.MovementStrategy;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace AntiAircraftGun
 {
@@ -8,9 +9,13 @@ namespace AntiAircraftGun
         private BaseDrawingAntiAirCraftGun _drawing;
 
         private AbstractStrategy? _abstractStrategy;
+
+        public BaseDrawingAntiAirCraftGun? SelectedZenit { get; private set; }
         public FormAntiAirCraftGun()
         {
             InitializeComponent();
+            _abstractStrategy = null;
+            SelectedZenit = null;
         }
 
         private void ButtonMove_Click(object sender, EventArgs e)
@@ -52,12 +57,18 @@ namespace AntiAircraftGun
         private void CreateAdvancedAintiAirCraftGun_Click(object sender, EventArgs e)
         {
             Random random = new Random();
+            Color bodyColor = Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256)); // Основной цвет
+            Color additionalColor = Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256));
+            Color dopColor = Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256)); // Доп. цвет для EntityAdvancedAntiAircraftGun
+            ColorDialog dialog = new();
+            if (dialog.ShowDialog() == DialogResult.OK)
+                bodyColor = dialog.Color;
+            if (dialog.ShowDialog() == DialogResult.OK)
+                dopColor = dialog.Color;
             _drawing = new AdvancedDrawingAntAirCraftGun(
                 random.Next(100, 300),   // Скорость
                 random.Next(1000, 3000), // Вес
-                Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256)), // Основной цвет
-                Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256)), // Доп. цвет
-                Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256)), // Доп. цвет для EntityAdvancedAntiAircraftGun
+                bodyColor, additionalColor, dopColor,
                 Convert.ToBoolean(random.Next(2)), // Rocket
                 Convert.ToBoolean(random.Next(2)),
                 pictureBoxAntiAircraftGun.Width,
@@ -71,11 +82,17 @@ namespace AntiAircraftGun
         private void CreateAntiAirCraftGun_Click(object sender, EventArgs e)
         {
             Random random = new Random();
+            Color bodyColor = Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256)); // Основной цвет
+            Color additionalColor = Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256)); // Доп. цвет
+            ColorDialog dialog = new();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                bodyColor = dialog.Color;
+            }
             _drawing = new BaseDrawingAntiAirCraftGun(
                 random.Next(100, 300),   // Скорость
                 random.Next(1000, 3000), // Вес
-                Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256)), // Основной цвет
-                Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256)), // Доп. цвет
+                bodyColor, additionalColor,
                 pictureBoxAntiAircraftGun.Width,
                 pictureBoxAntiAircraftGun.Height
             );
@@ -121,10 +138,12 @@ namespace AntiAircraftGun
             }
 
         }
-
-        private void comboBoxStrategy_SelectedIndexChanged(object sender, EventArgs e)
+        private void ButtonSelectZenit_Click(object sender, EventArgs e)
         {
-
+            SelectedZenit = _drawing;
+            DialogResult = DialogResult.OK;
         }
+
+
     }
 }
