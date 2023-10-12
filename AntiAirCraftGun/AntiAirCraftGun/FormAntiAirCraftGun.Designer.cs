@@ -2,38 +2,41 @@
 {
 	partial class FormAntiAirCraftGun
 	{
-        /// <summary>
-        ///  Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+		/// <summary>
+		///  Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        ///  Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		/// <summary>
+		///  Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        #region Windows Form Designer generated code
+		#region Windows Form Designer generated code
 
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
+		/// <summary>
+		///  Required method for Designer support - do not modify
+		///  the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
             this.pictureBoxAntiAircraftGun = new System.Windows.Forms.PictureBox();
-            this.buttonCreate = new System.Windows.Forms.Button();
+            this.CreateAdavancedAntiAirCraftGun = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
+            this.comboBoxStrategy = new System.Windows.Forms.ComboBox();
+            this.CreateAntiAirCraftGun = new System.Windows.Forms.Button();
+            this.Step = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAntiAircraftGun)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,16 +50,16 @@
             this.pictureBoxAntiAircraftGun.TabIndex = 0;
             this.pictureBoxAntiAircraftGun.TabStop = false;
             // 
-            // buttonCreate
+            // CreateAdavancedAntiAirCraftGun
             // 
-            this.buttonCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonCreate.Location = new System.Drawing.Point(32, 577);
-            this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(75, 23);
-            this.buttonCreate.TabIndex = 1;
-            this.buttonCreate.Text = "Создать";
-            this.buttonCreate.UseVisualStyleBackColor = true;
-            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
+            this.CreateAdavancedAntiAirCraftGun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CreateAdavancedAntiAirCraftGun.Location = new System.Drawing.Point(32, 577);
+            this.CreateAdavancedAntiAirCraftGun.Name = "CreateAdavancedAntiAirCraftGun";
+            this.CreateAdavancedAntiAirCraftGun.Size = new System.Drawing.Size(183, 23);
+            this.CreateAdavancedAntiAirCraftGun.TabIndex = 1;
+            this.CreateAdavancedAntiAirCraftGun.Text = "Создать с дополнениями";
+            this.CreateAdavancedAntiAirCraftGun.UseVisualStyleBackColor = true;
+            this.CreateAdavancedAntiAirCraftGun.Click += new System.EventHandler(this.CreateAdvancedAintiAirCraftGun_Click);
             // 
             // buttonLeft
             // 
@@ -106,16 +109,52 @@
             this.buttonDown.UseVisualStyleBackColor = true;
             this.buttonDown.Click += new System.EventHandler(this.ButtonMove_Click);
             // 
+            // comboBoxStrategy
+            // 
+            this.comboBoxStrategy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxStrategy.FormattingEnabled = true;
+            this.comboBoxStrategy.Items.AddRange(new object[] {
+            "Двигаться в центер ",
+            "Двигаться в правый нижний угол",
+            "Двигаться к краю окна"});
+            this.comboBoxStrategy.Location = new System.Drawing.Point(1244, 28);
+            this.comboBoxStrategy.Name = "comboBoxStrategy";
+            this.comboBoxStrategy.Size = new System.Drawing.Size(170, 23);
+            this.comboBoxStrategy.TabIndex = 6;
+            // 
+            // CreateAntiAirCraftGun
+            // 
+            this.CreateAntiAirCraftGun.Location = new System.Drawing.Point(221, 577);
+            this.CreateAntiAirCraftGun.Name = "CreateAntiAirCraftGun";
+            this.CreateAntiAirCraftGun.Size = new System.Drawing.Size(185, 23);
+            this.CreateAntiAirCraftGun.TabIndex = 7;
+            this.CreateAntiAirCraftGun.Text = "Создать обычный";
+            this.CreateAntiAirCraftGun.UseVisualStyleBackColor = true;
+            this.CreateAntiAirCraftGun.Click += new System.EventHandler(this.CreateAntiAirCraftGun_Click);
+            // 
+            // Step
+            // 
+            this.Step.Location = new System.Drawing.Point(1323, 61);
+            this.Step.Name = "Step";
+            this.Step.Size = new System.Drawing.Size(75, 23);
+            this.Step.TabIndex = 8;
+            this.Step.Text = "Шаг";
+            this.Step.UseVisualStyleBackColor = true;
+            this.Step.Click += new System.EventHandler(this.ButtonStep_Click);
+            // 
             // FormAntiAirCraftGun
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1491, 628);
+            this.Controls.Add(this.Step);
+            this.Controls.Add(this.CreateAntiAirCraftGun);
+            this.Controls.Add(this.comboBoxStrategy);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.buttonLeft);
-            this.Controls.Add(this.buttonCreate);
+            this.Controls.Add(this.CreateAdavancedAntiAirCraftGun);
             this.Controls.Add(this.pictureBoxAntiAircraftGun);
             this.Name = "FormAntiAirCraftGun";
             this.Text = "Form1";
@@ -123,16 +162,18 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
-        }
+		}
 
-        #endregion
+		#endregion
 
-        private PictureBox pictureBoxAntiAircraftGun;
-        private Button buttonCreate;
-        private Button buttonLeft;
-        private Button buttonUp;
-        private Button buttonRight;
-        private Button buttonDown;
-
+		private PictureBox pictureBoxAntiAircraftGun;
+		private Button CreateAdavancedAntiAirCraftGun;
+		private Button buttonLeft;
+		private Button buttonUp;
+		private Button buttonRight;
+		private Button buttonDown;
+        private ComboBox comboBoxStrategy;
+        private Button CreateAntiAirCraftGun;
+        private Button Step;
     }
 }

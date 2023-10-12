@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AntiAircraftGun
+namespace AntiAircraftGun.Enitites
 {
-    public class EntityAntiAircraftGun
+    public class EntityAntiAirCraftGun
     {
         /// <summary>
-		/// Скорость
-		/// </summary>
-		public int Speed { get; private set; }
+        /// Скорость
+        /// </summary>
+        public int Speed { get; private set; }
         /// <summary>
         /// Вес
         /// </summary>
@@ -21,7 +21,7 @@ namespace AntiAircraftGun
         /// </summary>
         public Color BodyColor { get; private set; }
         /// <summary>
-        /// Дополнительный цвет (для опциональных элементов)
+        /// Шаг перемещения автомобиля
         /// </summary>
         public Color AdditionalColor { get; private set; }
         /// <summary>
@@ -29,33 +29,17 @@ namespace AntiAircraftGun
         /// </summary>
         public double Step => (double)Speed * 100 / Weight;
         /// <summary>
-        /// Цвет для доп. деталей
-        /// </summary>
-        public Color DopColor { get; private set; }
-        /// <summary>
-        /// Ракета
-        /// </summary>
-        public bool Rocket { get; private set; }
-        /// <summary>
-        /// Радар
-        /// </summary>
-        public bool Radar { get; private set; }
-        /// <summary>
-        /// Инициализация полей объекта-класса спортивного автомобиля
+        /// Конструктор с параметрами
         /// </summary>
         /// <param name="speed">Скорость</param>
         /// <param name="weight">Вес автомобиля</param>
         /// <param name="bodyColor">Основной цвет</param>
-
-        public void Init(int speed, double weight, Color bodyColor, Color additionalColor, Color dopColor, bool rocket, bool radar)
+        public EntityAntiAirCraftGun(int speed, double weight, Color bodyColor, Color additionalColor)
         {
             Speed = speed;
             Weight = weight;
             BodyColor = bodyColor;
             AdditionalColor = additionalColor;
-            DopColor = dopColor;
-            Rocket = rocket;
-            Radar = radar;
         }
     }
 }
