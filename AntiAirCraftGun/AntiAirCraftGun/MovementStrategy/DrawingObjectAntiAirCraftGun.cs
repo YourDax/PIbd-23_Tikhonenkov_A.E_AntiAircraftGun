@@ -9,28 +9,28 @@ namespace AntiAircraftGun.MovementStrategy
 {
     public class DrawingObjectAntiAirCraftGun : IMoveableObject
     {
-        private readonly BaseDrawingAntiAirCraftGun? _drawningCar = null;
+        private readonly BaseDrawingAntiAirCraftGun? _drawningAntiAirCraftGun = null;
         public DrawingObjectAntiAirCraftGun(BaseDrawingAntiAirCraftGun drawningCar)
         {
-            _drawningCar = drawningCar;
+            _drawningAntiAirCraftGun = drawningCar;
         }
         public ObjectParameters? GetObjectPosition
         {
             get
             {
-                if (_drawningCar == null || _drawningCar.AntiAirСraftGun ==
+                if (_drawningAntiAirCraftGun == null || _drawningAntiAirCraftGun.AntiAirСraftGun ==
                 null)
                 {
                     return null;
                 }
-                return new ObjectParameters(_drawningCar.GetPosX,
-                _drawningCar.GetPosY, _drawningCar.GetWidth, _drawningCar.GetHeight);
+                return new ObjectParameters(_drawningAntiAirCraftGun.GetPosX,
+                _drawningAntiAirCraftGun.GetPosY, _drawningAntiAirCraftGun.GetWidth, _drawningAntiAirCraftGun.GetHeight);
             }
         }
-        public int GetStep => (int)(_drawningCar?.AntiAirСraftGun?.Step ?? 0);
+        public int GetStep => (int)(_drawningAntiAirCraftGun?.AntiAirСraftGun?.Step ?? 0);
         public bool CheckCanMove(DirectionType direction) =>
-        _drawningCar?.CanMove(direction) ?? false;
+        _drawningAntiAirCraftGun?.CanMove(direction) ?? false;
         public void MoveObject(DirectionType direction) =>
-        _drawningCar?.MoveTransport(direction);
+        _drawningAntiAirCraftGun?.MoveTransport(direction);
     }
 }
