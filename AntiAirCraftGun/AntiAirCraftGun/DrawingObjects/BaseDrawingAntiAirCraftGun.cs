@@ -81,9 +81,9 @@ namespace AntiAircraftGun.DrawingObjects
                 //вверх
                 DirectionType.Up => _startPosY - AntiAirСraftGun.Step > 0,
                 // вправо
-                DirectionType.Right =>_startPosX + AntiAirСraftGun.Step < _pictureWidth - 110,
-                                             //вниз
-                DirectionType.Down => _startPosY + AntiAirСraftGun.Step < _pictureHeight - 60,
+                DirectionType.Right =>_startPosX + AntiAirСraftGun.Step + _zenitWidth < _pictureWidth,
+                //вниз
+                DirectionType.Down => _startPosY + AntiAirСraftGun.Step + _zenitHeight< _pictureHeight,
                 _ => false,
             };
         }
