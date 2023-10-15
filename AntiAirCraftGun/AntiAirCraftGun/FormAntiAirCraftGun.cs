@@ -65,7 +65,7 @@ namespace AntiAircraftGun
                 bodyColor = dialog.Color;
             if (dialog.ShowDialog() == DialogResult.OK)
                 dopColor = dialog.Color;
-            _drawing = new AdvancedDrawingAntiAirCraftGun(
+            _drawingAntiAirCraftGun = new AdvancedDrawingAntiAirCraftGun(
                 random.Next(100, 300),   // Скорость
                 random.Next(1000, 3000), // Вес
                 bodyColor, additionalColor, dopColor,
@@ -89,7 +89,7 @@ namespace AntiAircraftGun
             {
                 bodyColor = dialog.Color;
             }
-            _drawing = new BaseDrawingAntiAirCraftGun(
+            _drawingAntiAirCraftGun = new BaseDrawingAntiAirCraftGun(
                 random.Next(100, 300),   // Скорость
                 random.Next(1000, 3000), // Вес
                 bodyColor, additionalColor,
@@ -140,7 +140,7 @@ namespace AntiAircraftGun
         }
         private void ButtonSelectZenit_Click(object sender, EventArgs e)
         {
-            SelectedZenit = _drawing;
+            SelectedZenit = _drawingAntiAirCraftGun;
             DialogResult = DialogResult.OK;
         }
 
