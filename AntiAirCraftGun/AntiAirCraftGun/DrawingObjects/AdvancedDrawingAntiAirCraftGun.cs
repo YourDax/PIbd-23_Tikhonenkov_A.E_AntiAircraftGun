@@ -9,26 +9,26 @@ using static System.Windows.Forms.AxHost;
 
 namespace AntiAircraftGun.DrawingObjects 
 {
-    public class AdvancedDrawingAntAirCraftGun : BaseDrawingAntiAirCraftGun
+    public class AdvancedDrawingAntiAirCraftGun : BaseDrawingAntiAirCraftGun
     {
         private Point[] points = new Point[4];
 
-        public AdvancedDrawingAntAirCraftGun(int speed, double weight, Color bodyColor, Color additionalColor, Color dopColor, bool rocket,bool radar, int width, int height) :
+        public AdvancedDrawingAntiAirCraftGun(int speed, double weight, Color bodyColor, Color additionalColor, Color dopColor, bool rocket,bool radar, int width, int height) :
         base(speed, weight, bodyColor, additionalColor, width, height)
         {
-            EntityAntiAirСraftGun = new EntityAdvancedAntiAircraftGun(speed, weight, bodyColor, additionalColor, dopColor, rocket,radar);
+            AntiAirСraftGun = new EntityAdvancedAntiAirCraftGun(speed, weight, bodyColor, additionalColor, dopColor, rocket,radar);
         }
 
         public override void DrawTransport(Graphics g)
         {
-            if (EntityAntiAirСraftGun is not EntityAdvancedAntiAircraftGun advancedGun)
+            if (AntiAirСraftGun is not EntityAdvancedAntiAirCraftGun advancedGun)
             {
                 return;
             }
 
             Pen pen = new Pen(Color.Black);
-            Brush bodyBrush = new SolidBrush(EntityAntiAirСraftGun.BodyColor);
-            Brush additionalBrush = new SolidBrush(EntityAntiAirСraftGun.AdditionalColor);
+            Brush bodyBrush = new SolidBrush(AntiAirСraftGun.BodyColor);
+            Brush additionalBrush = new SolidBrush(AntiAirСraftGun.AdditionalColor);
             base.DrawTransport(g);
             Brush dopBrush = new SolidBrush(advancedGun.DopColor);
             Pen dopPen = new Pen(advancedGun.DopColor);

@@ -65,7 +65,7 @@ namespace AntiAircraftGun
                 bodyColor = dialog.Color;
             if (dialog.ShowDialog() == DialogResult.OK)
                 dopColor = dialog.Color;
-            _drawing = new AdvancedDrawingAntAirCraftGun(
+            _drawing = new AdvancedDrawingAntiAirCraftGun(
                 random.Next(100, 300),   // Скорость
                 random.Next(1000, 3000), // Вес
                 bodyColor, additionalColor, dopColor,

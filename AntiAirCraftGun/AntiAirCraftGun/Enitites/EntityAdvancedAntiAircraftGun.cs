@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AntiAircraftGun.Enitites
 {
-    public class EntityAdvancedAntiAircraftGun : EntityAntiAirCraftGun
+    public class EntityAdvancedAntiAirCraftGun : EntityAntiAirCraftGun
     {
         
         public Color DopColor { get; private set; }
@@ -17,7 +17,7 @@ namespace AntiAircraftGun.Enitites
 
 
 
-        public EntityAdvancedAntiAircraftGun(int speed, double weight, Color bodyColor, Color additionalColor,Color dopColor, bool rocket, bool radar)
+        public EntityAdvancedAntiAirCraftGun(int speed, double weight, Color bodyColor, Color additionalColor,Color dopColor, bool rocket, bool radar)
             : base(speed, weight, bodyColor, additionalColor)
         {
             DopColor = dopColor;

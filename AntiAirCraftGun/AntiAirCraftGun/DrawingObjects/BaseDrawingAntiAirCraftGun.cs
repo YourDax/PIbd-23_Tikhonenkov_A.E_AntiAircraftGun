@@ -10,7 +10,7 @@ namespace AntiAircraftGun.DrawingObjects
 {
     public class BaseDrawingAntiAirCraftGun
     {
-        public EntityAntiAirCraftGun? EntityAntiAirСraftGun { get; protected set; }
+        public EntityAntiAirCraftGun? AntiAirСraftGun { get; protected set; }
         private readonly int _pictureWidth;
         private readonly int _pictureHeight;
         protected int _startPosX;
@@ -22,7 +22,7 @@ namespace AntiAircraftGun.DrawingObjects
         {
             _pictureWidth = width;
             _pictureHeight = height;
-            EntityAntiAirСraftGun = new EntityAntiAirCraftGun(speed, weight, bodyColor, additionalColor);
+            AntiAirСraftGun = new EntityAntiAirCraftGun(speed, weight, bodyColor, additionalColor);
         }
 
         protected BaseDrawingAntiAirCraftGun(int speed, double weight, Color bodyColor, Color additionalColor, int width, int height, int carWidth, int carHeight)
@@ -31,21 +31,20 @@ namespace AntiAircraftGun.DrawingObjects
             _pictureHeight = height;
             _zenitWidth = carWidth;
             _zenitHeight = carHeight;
-            EntityAntiAirСraftGun = new EntityAntiAirCraftGun(speed, weight, bodyColor, additionalColor);
+            AntiAirСraftGun = new EntityAntiAirCraftGun(speed, weight, bodyColor, additionalColor);
         }
 
         public void SetPosition(int x, int y)
         {
-            if (x < 0 || y < 0)
+            if (AntiAirСraftGun == null) return;
+            _startPosX = x;
+            _startPosY = y;
+            if (x < 0 || y < 0 || x + _zenitWidth >= _pictureWidth || y + _zenitHeight >= _pictureHeight)
             {
-                _startPosX = 10;
-                _startPosY = 10;
+                _startPosX = 1;
+                _startPosY = 1;
             }
-            else
-            {
-                _startPosX = x;
-                _startPosY = y;
-            }
+
         }
         /// <summary>
         /// Координата X объекта
@@ -71,20 +70,20 @@ namespace AntiAircraftGun.DrawingObjects
         /// <returns>true - можно переместится по указанному направлению</returns>
         public bool CanMove(DirectionType direction)
         {
-            if (EntityAntiAirСraftGun == null)
+            if (AntiAirСraftGun == null)
             {
                 return false;
             }
             return direction switch
             {
                 //влево
-                DirectionType.Left => _startPosX - EntityAntiAirСraftGun.Step > 0,
+                DirectionType.Left => _startPosX - AntiAirСraftGun.Step > 0,
                 //вверх
-                DirectionType.Up => _startPosY - EntityAntiAirСraftGun.Step > 0,
+                DirectionType.Up => _startPosY - AntiAirСraftGun.Step > 0,
                 // вправо
-                DirectionType.Right =>_startPosX + EntityAntiAirСraftGun.Step < _pictureWidth - 110,
+                DirectionType.Right =>_startPosX + AntiAirСraftGun.Step < _pictureWidth - 110,
                                              //вниз
-                DirectionType.Down => _startPosY + EntityAntiAirСraftGun.Step < _pictureHeight - 60,
+                DirectionType.Down => _startPosY + AntiAirСraftGun.Step < _pictureHeight - 60,
                 _ => false,
             };
         }
@@ -94,7 +93,7 @@ namespace AntiAircraftGun.DrawingObjects
         /// <param name="direction">Направление</param>
         public void MoveTransport(DirectionType direction)
         {
-            if (!CanMove(direction) || EntityAntiAirСraftGun == null)
+            if (!CanMove(direction) || AntiAirСraftGun == null)
             {
                 return;
             }
@@ -102,19 +101,19 @@ namespace AntiAircraftGun.DrawingObjects
             {
                 //влево
                 case DirectionType.Left:
-                    _startPosX -= (int)EntityAntiAirСraftGun.Step;
+                    _startPosX -= (int)AntiAirСraftGun.Step;
                     break;
                 //вверх
                 case DirectionType.Up:
-                    _startPosY -= (int)EntityAntiAirСraftGun.Step;
+                    _startPosY -= (int)AntiAirСraftGun.Step;
                     break;
                 // вправо
                 case DirectionType.Right:
-                    _startPosX += (int)EntityAntiAirСraftGun.Step;
+                    _startPosX += (int)AntiAirСraftGun.Step;
                     break;
                 //вниз
                 case DirectionType.Down:
-                    _startPosY += (int)EntityAntiAirСraftGun.Step;
+                    _startPosY += (int)AntiAirСraftGun.Step;
                     break;
             }
         }
@@ -124,8 +123,8 @@ namespace AntiAircraftGun.DrawingObjects
             
 
             Pen pen = Pens.Black; 
-            Brush bodyBrush = new SolidBrush(EntityAntiAirСraftGun.BodyColor);
-            Brush additionalBrush = new SolidBrush(EntityAntiAirСraftGun.AdditionalColor);
+            Brush bodyBrush = new SolidBrush(AntiAirСraftGun.BodyColor);
+            Brush additionalBrush = new SolidBrush(AntiAirСraftGun.AdditionalColor);
 
             g.FillEllipse(additionalBrush, _startPosX, _startPosY + 40, 110, 10);
             g.DrawEllipse(pen, _startPosX, _startPosY + 40, 110, 10);
