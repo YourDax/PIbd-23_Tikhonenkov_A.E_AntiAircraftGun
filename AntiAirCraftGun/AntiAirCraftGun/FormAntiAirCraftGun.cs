@@ -5,63 +5,28 @@ namespace AntiAircraftGun
         /// <summary>
         /// Поле-объект для прорисовки объекта
         /// </summary>
-        private DrawingAntiAirCraftGun? _drawing;
+        private DrawingAntiAirCraftGun? _drawingAntiAirCraftGun;
 		public FormAntiAirCraftGun()
 		{
 			InitializeComponent();
 		}
-		private void Move_Click(object sender, EventArgs e)
-		{
-            if (_drawing == null)
-            {
-                return;
-            }
-            string name = ((Button)sender)?.Name ?? string.Empty;
-            switch (name)
-            {
-                case "buttonUp":
-                    _drawing.MoveTransport(DirectionType.Up);
-                    break;
-                case "buttonDown":
-                    _drawing.MoveTransport(DirectionType.Down);
-                    break;
-                case "buttonLeft":
-                    _drawing.MoveTransport(DirectionType.Left);
-                    break;
-                case "buttonRight":
-                    _drawing.MoveTransport(DirectionType.Right);
-                    break;
-            }
-            Draw();
-        }
-        
-
-        
-        
-
-        private void pictureBoxZenit_Click(object sender, EventArgs e)
-		    {
-
-		    }
         /// <summary>
         /// Метод прорисовки машины
         /// </summary>
         private void Draw()
         {
-            if (_drawing == null)
+            if (_drawingAntiAirCraftGun == null)
             {
                 return;
             }
             Bitmap bmp = new(pictureBoxAntiAircraftGun.Width,pictureBoxAntiAircraftGun.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            _drawing.DrawTransport(gr);
+            _drawingAntiAirCraftGun.DrawTransport(gr);
             pictureBoxAntiAircraftGun.Image = bmp;
         }
-       
-        
         private void ButtonMove_Click(object sender, EventArgs e)
         {
-            if (_drawing == null)
+            if (_drawingAntiAirCraftGun == null)
             {
                 return;
             }
@@ -69,16 +34,16 @@ namespace AntiAircraftGun
             switch (name)
             {
                 case "buttonUp":
-                    _drawing.MoveTransport(DirectionType.Up);
+                    _drawingAntiAirCraftGun.MoveTransport(DirectionType.Up);
                     break;
                 case "buttonDown":
-                    _drawing.MoveTransport(DirectionType.Down);
+                    _drawingAntiAirCraftGun.MoveTransport(DirectionType.Down);
                     break;
                 case "buttonLeft":
-                    _drawing.MoveTransport(DirectionType.Left);
+                    _drawingAntiAirCraftGun.MoveTransport(DirectionType.Left);
                     break;
                 case "buttonRight":
-                    _drawing.MoveTransport(DirectionType.Right);
+                    _drawingAntiAirCraftGun.MoveTransport(DirectionType.Right);
                     break;
             }
             Draw();
@@ -86,8 +51,8 @@ namespace AntiAircraftGun
         private void buttonCreate_Click(object sender, EventArgs e) 
         {
             Random random = new();
-            _drawing = new DrawingAntiAirCraftGun();
-            _drawing.Init(random.Next(100, 300),//cкорость
+            _drawingAntiAirCraftGun = new DrawingAntiAirCraftGun();
+            _drawingAntiAirCraftGun.Init(random.Next(100, 300),//cкорость
             random.Next(1000, 3000), //вес
             Color.FromArgb(random.Next(0, 256), random.Next(0, 256),//основной цвет
             random.Next(0, 256)),
@@ -99,7 +64,7 @@ namespace AntiAircraftGun
             Convert.ToBoolean(random.Next(2)), // Radar
 
             pictureBoxAntiAircraftGun.Width, pictureBoxAntiAircraftGun.Height);
-            _drawing.SetPosition(random.Next(10, 100),
+            _drawingAntiAirCraftGun.SetPosition(random.Next(10, 100),
             random.Next(10, 100));
 
 

@@ -72,7 +72,7 @@ namespace AntiAircraftGun
             if (AntiAircraftGun == null) return;
             _startPosX = x;
             _startPosY = y;
-            if (x + _zenitWidth >= _pictureWidth || y + _zenitHeight>= _pictureHeight)
+            if (x < 0 || y < 0 ||x + _zenitWidth >= _pictureWidth || y + _zenitHeight>= _pictureHeight)
             {
                 _startPosX = 1;
                 _startPosY = 1;
@@ -106,14 +106,14 @@ namespace AntiAircraftGun
                     break;
                 // вправо
                 case DirectionType.Right:
-                    if (_startPosX + AntiAircraftGun.Step < _pictureWidth-110)
+                    if (_startPosX + AntiAircraftGun.Step + _zenitWidth < _pictureWidth)
                     {
                         _startPosX += (int)AntiAircraftGun.Step;
                     }
                     break;
                 //вниз
                 case DirectionType.Down:
-                    if (_startPosY + AntiAircraftGun.Step < _pictureHeight-60)
+                    if (_startPosY + AntiAircraftGun.Step + _zenitHeight < _pictureHeight)
                     {
                         _startPosY += (int)AntiAircraftGun.Step;
                     }
