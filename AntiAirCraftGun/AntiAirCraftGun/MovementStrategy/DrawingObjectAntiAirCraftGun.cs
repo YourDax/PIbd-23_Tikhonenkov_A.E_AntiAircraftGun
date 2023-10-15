@@ -18,7 +18,7 @@ namespace AntiAircraftGun.MovementStrategy
         {
             get
             {
-                if (_drawningCar == null || _drawningCar.EntityAntiAirСraftGun ==
+                if (_drawningCar == null || _drawningCar.AntiAirСraftGun ==
                 null)
                 {
                     return null;
@@ -27,7 +27,7 @@ namespace AntiAircraftGun.MovementStrategy
                 _drawningCar.GetPosY, _drawningCar.GetWidth, _drawningCar.GetHeight);
             }
         }
-        public int GetStep => (int)(_drawningCar?.EntityAntiAirСraftGun?.Step ?? 0);
+        public int GetStep => (int)(_drawningCar?.AntiAirСraftGun?.Step ?? 0);
         public bool CheckCanMove(DirectionType direction) =>
         _drawningCar?.CanMove(direction) ?? false;
         public void MoveObject(DirectionType direction) =>

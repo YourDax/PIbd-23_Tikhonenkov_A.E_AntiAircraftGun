@@ -120,7 +120,7 @@
             this.comboBoxStrategy.Name = "comboBoxStrategy";
             this.comboBoxStrategy.Size = new System.Drawing.Size(170, 23);
             this.comboBoxStrategy.TabIndex = 6;
-            this.comboBoxStrategy.SelectedIndexChanged += new System.EventHandler(this.comboBoxStrategy_SelectedIndexChanged);
+
             // 
             // CreateAntiAirCraftGun
             // 

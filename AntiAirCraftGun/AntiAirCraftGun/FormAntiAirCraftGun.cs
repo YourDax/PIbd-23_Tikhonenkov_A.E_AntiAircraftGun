@@ -5,7 +5,7 @@ namespace AntiAircraftGun
 {
     public partial class FormAntiAirCraftGun : Form
     {
-        private BaseDrawingAntiAirCraftGun _drawing;
+        private BaseDrawingAntiAirCraftGun _drawingAntiAirCraftGun;
 
         private AbstractStrategy? _abstractStrategy;
         public FormAntiAirCraftGun()
@@ -15,7 +15,7 @@ namespace AntiAircraftGun
 
         private void ButtonMove_Click(object sender, EventArgs e)
         {
-            if (_drawing == null)
+            if (_drawingAntiAirCraftGun == null)
             {
                 return;
             }
@@ -23,36 +23,36 @@ namespace AntiAircraftGun
             switch (name)
             {
                 case "buttonUp":
-                    _drawing.MoveTransport(DirectionType.Up);
+                    _drawingAntiAirCraftGun.MoveTransport(DirectionType.Up);
                     break;
                 case "buttonDown":
-                    _drawing.MoveTransport(DirectionType.Down);
+                    _drawingAntiAirCraftGun.MoveTransport(DirectionType.Down);
                     break;
                 case "buttonLeft":
-                    _drawing.MoveTransport(DirectionType.Left);
+                    _drawingAntiAirCraftGun.MoveTransport(DirectionType.Left);
                     break;
                 case "buttonRight":
-                    _drawing.MoveTransport(DirectionType.Right);
+                    _drawingAntiAirCraftGun.MoveTransport(DirectionType.Right);
                     break;
             }
             Draw();
         }
         private void Draw()
         {
-            if (_drawing == null)
+            if (_drawingAntiAirCraftGun == null)
             {
                 return;
             }
             Bitmap bmp = new Bitmap(pictureBoxAntiAircraftGun.Width, pictureBoxAntiAircraftGun.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            _drawing.DrawTransport(gr);
+            _drawingAntiAirCraftGun.DrawTransport(gr);
             pictureBoxAntiAircraftGun.Image = bmp;
         }
 
         private void CreateAdvancedAintiAirCraftGun_Click(object sender, EventArgs e)
         {
             Random random = new Random();
-            _drawing = new AdvancedDrawingAntAirCraftGun(
+            _drawingAntiAirCraftGun = new AdvancedDrawingAntiAirCraftGun(
                 random.Next(100, 300),   // Скорость
                 random.Next(1000, 3000), // Вес
                 Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256)), // Основной цвет
@@ -64,14 +64,14 @@ namespace AntiAircraftGun
                 pictureBoxAntiAircraftGun.Height
             );
 
-            _drawing.SetPosition(random.Next(10, 100), random.Next(10, 100));
+            _drawingAntiAirCraftGun.SetPosition(random.Next(10, 100), random.Next(10, 100));
             Draw();
         }
 
         private void CreateAntiAirCraftGun_Click(object sender, EventArgs e)
         {
             Random random = new Random();
-            _drawing = new BaseDrawingAntiAirCraftGun(
+            _drawingAntiAirCraftGun = new BaseDrawingAntiAirCraftGun(
                 random.Next(100, 300),   // Скорость
                 random.Next(1000, 3000), // Вес
                 Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256)), // Основной цвет
@@ -80,13 +80,13 @@ namespace AntiAircraftGun
                 pictureBoxAntiAircraftGun.Height
             );
 
-            _drawing.SetPosition(random.Next(10, 100), random.Next(10, 100));
+            _drawingAntiAirCraftGun.SetPosition(random.Next(10, 100), random.Next(10, 100));
             Draw();
         }
 
         private void ButtonStep_Click(object sender, EventArgs e)
         {
-            if (_drawing == null)
+            if (_drawingAntiAirCraftGun == null)
             {
                 return;
             }
@@ -104,7 +104,7 @@ namespace AntiAircraftGun
                     return;
                 }
                 _abstractStrategy.SetData(new
-                DrawingObjectAntiAirCraftGun(_drawing), pictureBoxAntiAircraftGun.Width,
+                DrawingObjectAntiAirCraftGun(_drawingAntiAirCraftGun), pictureBoxAntiAircraftGun.Width,
                 pictureBoxAntiAircraftGun.Height);
                 comboBoxStrategy.Enabled = false;
             }
@@ -119,11 +119,6 @@ namespace AntiAircraftGun
                 comboBoxStrategy.Enabled = true;
                 _abstractStrategy = null;
             }
-
-        }
-
-        private void comboBoxStrategy_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
         }
     }
