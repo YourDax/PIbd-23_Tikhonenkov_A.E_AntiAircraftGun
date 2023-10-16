@@ -15,11 +15,11 @@ namespace AntiAircraftGun
 {
     public partial class FormAntiAirCraftGunCollection : Form
     {
-        private readonly ZenitsGenericCollection<BaseDrawingAntiAirCraftGun,DrawingObjectAntiAirCraftGun> _zenits;
+        private readonly AntiAirCraftGunGenericCollection<BaseDrawingAntiAirCraftGun,DrawingObjectAntiAirCraftGun> _zenits;
         public FormAntiAirCraftGunCollection()
         {
             InitializeComponent();
-            _zenits = new ZenitsGenericCollection<BaseDrawingAntiAirCraftGun,
+            _zenits = new AntiAirCraftGunGenericCollection<BaseDrawingAntiAirCraftGun,
                 DrawingObjectAntiAirCraftGun>(pictureBoxCollection.Width, pictureBoxCollection.Height);
 
         }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AntiAircraftGun.Generics
 {
-    internal class ZenitsGenericCollection<T,U>
+    internal class AntiAirCraftGunGenericCollection<T,U>
         where T : BaseDrawingAntiAirCraftGun
         where U : IMoveableObject
     {
@@ -37,7 +37,7 @@ namespace AntiAircraftGun.Generics
         /// </summary>
         /// <param name="picWidth"></param>
         /// <param name="picHeight"></param>
-        public ZenitsGenericCollection(int picWidth, int picHeight)
+        public AntiAirCraftGunGenericCollection(int picWidth, int picHeight)
         {
             int width = picWidth / _placeSizeWidth;
             int height = picHeight / _placeSizeHeight;
@@ -51,7 +51,7 @@ namespace AntiAircraftGun.Generics
         /// <param name="collect"></param>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public static bool operator +(ZenitsGenericCollection<T, U> collect, T?
+        public static bool operator +(AntiAirCraftGunGenericCollection<T, U> collect, T?
         obj)
         {
             if (obj == null)
@@ -67,7 +67,7 @@ namespace AntiAircraftGun.Generics
         /// <param name="collect"></param>
         /// <param name="pos"></param>
         /// <returns></returns>
-        public static T? operator -(ZenitsGenericCollection<T, U> collect, int
+        public static T? operator -(AntiAirCraftGunGenericCollection<T, U> collect, int
         pos)
         {
             T? obj = collect._collection.Get(pos);
