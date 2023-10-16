@@ -15,44 +15,130 @@ namespace AntiAircraftGun
 {
     public partial class FormAntiAirCraftGunCollection : Form
     {
-        private readonly ZenitsGenericCollection<BaseDrawingAntiAirCraftGun,DrawingObjectAntiAirCraftGun> _zenits;
+        private readonly AntiAirCraftGunGenericStorage _storage;
         public FormAntiAirCraftGunCollection()
         {
             InitializeComponent();
-            _zenits = new ZenitsGenericCollection<BaseDrawingAntiAirCraftGun,
-                DrawingObjectAntiAirCraftGun>(pictureBoxCollection.Width, pictureBoxCollection.Height);
+            _storage = new AntiAirCraftGunGenericStorage(pictureBoxCollection.Width,pictureBoxCollection.Height);
 
+        }
+        /// <summary>
+        /// Заполнение listBoxObjects
+        /// </summary>
+        private void ReloadObjects()
+        {
+            int index = listBoxStorages.SelectedIndex;
+            listBoxStorages.Items.Clear();
+            for (int i = 0; i < _storage.Keys.Count; i++)
+            {
+                listBoxStorages.Items.Add(_storage.Keys[i]);
+            }
+            if (listBoxStorages.Items.Count > 0 && (index == -1 || index
+            >= listBoxStorages.Items.Count))
+            {
+                listBoxStorages.SelectedIndex = 0;
+            }
+            else if (listBoxStorages.Items.Count > 0 && index > -1 &&
+            index < listBoxStorages.Items.Count)
+            {
+                listBoxStorages.SelectedIndex = index;
+            }
+        }
+        /// <summary>
+        /// Добавление набора в коллекцию
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonAddObject_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxStorageName.Text))
+            {
+                MessageBox.Show("Не все данные заполнены", "Ошибка",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            _storage.AddSet(textBoxStorageName.Text);
+            ReloadObjects();
+        }
+        /// <summary>
+        /// Выбор набора
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ListBoxObjects_SelectedIndexChanged(object sender,
+        EventArgs e)
+        {
+            pictureBoxCollection.Image =
+            _storage[listBoxStorages.SelectedItem?.ToString() ?? string.Empty]?.ShowZenits();
+        }
+        /// <summary>
+        /// Удаление набора
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonDelObject_Click(object sender, EventArgs e)
+        {
+            if (listBoxStorages.SelectedIndex == -1)
+            {
+                return;
+            }
+            if (MessageBox.Show($"Удалить объект{ listBoxStorages.SelectedItem}?", "Удаление",
+                MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                _storage.DelSet(listBoxStorages.SelectedItem.ToString()
+                ?? string.Empty);
+                ReloadObjects();
+            }
         }
         private void ButtonAddZenit_Click(object sender, EventArgs e)
         {
+            if (listBoxStorages.SelectedIndex == -1)
+            {
+                MessageBox.Show("Выберите набор в списке.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var obj = _storage[listBoxStorages.SelectedItem.ToString() ?? string.Empty];
+            if (obj == null)
+            {
+                MessageBox.Show("Выбранный набор не найден.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             FormAntiAirCraftGun form = new();
             if (form.ShowDialog() == DialogResult.OK)
             {
-                if (_zenits + form.SelectedZenit != null)
+                if (obj + form.SelectedZenit)
                 {
                     MessageBox.Show("Объект добавлен");
-                    pictureBoxCollection.Image = _zenits.ShowZenits();
+                    pictureBoxCollection.Image = obj.ShowZenits();
                 }
                 else
                 {
                     MessageBox.Show("Не удалось добавить объект");
                 }
-
             }
         }
 
         private void ButtonDeleteZenit_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Удалить объект?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-
+            if (listBoxStorages.SelectedIndex == -1)
             {
                 return;
             }
-            int pos = Convert.ToInt32(textBox.Text);
-            if (_zenits - pos != null)
+            var obj = _storage[listBoxStorages.SelectedItem.ToString() ?? string.Empty];
+            if (obj == null)
+            {
+                return;
+            }
+            if (MessageBox.Show("Удалить объект?", "Удаление",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return;
+            }
+            int pos = Convert.ToInt32(maskedTextBoxNumber.Text);
+            if (obj - pos != null)
             {
                 MessageBox.Show("Объект удален");
-                pictureBoxCollection.Image = _zenits.ShowZenits();
+                pictureBoxCollection.Image = obj.ShowZenits();
             }
             else
             {
@@ -62,7 +148,17 @@ namespace AntiAircraftGun
 
         private void ButtonUpdateCollection_Click(object sender, EventArgs e)
         {
-            pictureBoxCollection.Image = _zenits.ShowZenits();
+            if (listBoxStorages.SelectedIndex == -1)
+            {
+                return;
+            }
+            var obj = _storage[listBoxStorages.SelectedItem.ToString() ??
+            string.Empty];
+            if (obj == null)
+            {
+                return;
+            }
+            pictureBoxCollection.Image = obj.ShowZenits();
 
         }
     }

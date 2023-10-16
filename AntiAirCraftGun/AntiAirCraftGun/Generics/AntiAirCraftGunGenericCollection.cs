@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AntiAircraftGun.Generics
 {
-    internal class ZenitsGenericCollection<T,U>
+    internal class AntiAirCraftGunGenericCollection<T,U>
         where T : BaseDrawingAntiAirCraftGun
         where U : IMoveableObject
     {
@@ -37,7 +37,7 @@ namespace AntiAircraftGun.Generics
         /// </summary>
         /// <param name="picWidth"></param>
         /// <param name="picHeight"></param>
-        public ZenitsGenericCollection(int picWidth, int picHeight)
+        public AntiAirCraftGunGenericCollection(int picWidth, int picHeight)
         {
             int width = picWidth / _placeSizeWidth;
             int height = picHeight / _placeSizeHeight;
@@ -51,26 +51,25 @@ namespace AntiAircraftGun.Generics
         /// <param name="collect"></param>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public static bool operator +(ZenitsGenericCollection<T, U> collect, T?
-        obj)
+        public static bool operator +(AntiAirCraftGunGenericCollection<T, U> collect, T? obj)
         {
             if (obj == null)
             {
+                MessageBox.Show("Объект пустой. Невозможно добавить.");
                 return false;
             }
             return collect?._collection.Insert(obj) ?? false;
         }
-    
+
         /// <summary>
         /// Перегрузка оператора вычитания
         /// </summary>
         /// <param name="collect"></param>
         /// <param name="pos"></param>
         /// <returns></returns>
-        public static T? operator -(ZenitsGenericCollection<T, U> collect, int
-        pos)
+        public static T? operator -(AntiAirCraftGunGenericCollection<T, U> collect, int pos)
         {
-            T? obj = collect._collection.Get(pos);
+            T? obj = collect._collection[pos];
             if (obj != null)
             {
                 collect._collection.Remove(pos);
@@ -84,7 +83,7 @@ namespace AntiAircraftGun.Generics
         /// <returns></returns>
         public U? GetU(int pos)
         {
-            return (U?)_collection.Get(pos)?.GetMoveableObject;
+            return (U?)_collection[pos]?.GetMoveableObject;
         }
         /// <summary>
         /// Вывод всего набора объектов
@@ -129,10 +128,11 @@ namespace AntiAircraftGun.Generics
             int maxX = _pictureWidth; // Максимальное значение X, при достижении которого будет ошибка
             int maxY = _pictureHeight; // Максимальное значение Y, когда нужно изменить X
             int distance_between_objects = _placeSizeHeight;
-            for (int i = 0; i < _collection.Count; i++)
+
+            foreach (var zenit in _collection.GetZenits())
             {
                 // TODO: Получение объекта
-                T? obj = _collection.Get(i);
+                T? obj = zenit;
 
                 if (obj != null)
                 {
@@ -140,23 +140,23 @@ namespace AntiAircraftGun.Generics
                     if (x >= maxX)
                     {
                         MessageBox.Show("Не хватает места для объекта.");
-                        break; 
+                        break;
                     }
 
                     // Устанавливаем позицию 
-                    obj.SetPosition(x, y+10);
+                    obj.SetPosition(x, y + 10);
 
                     // TODO: Прорисовка объекта
                     obj.DrawTransport(g);
 
                     // Увеличиваем координату Y для следующего объекта
-                    y += distance_between_objects; 
+                    y += distance_between_objects;
 
                     // Проверяем, если Y достигло максимума, изменяем X и сбрасываем Y
-                    if (y+distance_between_objects >= maxY)
+                    if (y + distance_between_objects >= maxY)
                     {
                         y = 0;
-                        x += obj.GetWidth+10 + distance_between_objects;
+                        x += obj.GetWidth + 10 + _placeSizeWidth;
                     }
                 }
             }
