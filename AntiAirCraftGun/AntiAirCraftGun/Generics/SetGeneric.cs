@@ -80,6 +80,7 @@ namespace AntiAircraftGun.Generics
                 if (position < 0 || position >= Count)
                 {
                     MessageBox.Show("Индекс выходит за пределы диапазона");
+                    return null;
                 }
                 return _places[position];
             }
@@ -88,7 +89,8 @@ namespace AntiAircraftGun.Generics
                 // TODO: Проверить позицию
                 if (position < 0 || position >= Count)
                 {
-                    throw new IndexOutOfRangeException("Индекс выходит за пределы диапазона");
+                    MessageBox.Show("Индекс выходит за пределы диапазона");
+                    return;
                 }
                 // TODO: Проверить наличие доступных слотов в списке
                 if (_places.Count < _maxCount)
@@ -98,7 +100,8 @@ namespace AntiAircraftGun.Generics
                 }
                 else
                 {
-                    throw new InvalidOperationException("Список уже заполнен");
+                    MessageBox.Show("Список уже заполнен");
+                    return;
                 }
             }
         }
