@@ -38,18 +38,18 @@ namespace AntiAircraftGun.Generics
         public int Insert(T car)
         {
             if (_places.Count == _maxCount)
-                return false;
+                return -1;
             Insert(car, 0);
-            return true;
+            return 1;
 
         }
 
-        public bool Insert(T car, int position)
+        public int Insert(T car, int position)
         {
             if (!(position >= 0 && position <= Count && _places.Count < _maxCount))
-                return false;
+                return -1;
             _places.Insert(position, car);
-            return true;
+            return 1;
         }
 
         /// <summary>

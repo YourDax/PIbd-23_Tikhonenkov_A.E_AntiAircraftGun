@@ -106,7 +106,7 @@ namespace AntiAircraftGun
             FormAntiAirCraftGun form = new();
             if (form.ShowDialog() == DialogResult.OK)
             {
-                if (obj + form.SelectedZenit)
+                if ((obj + form.SelectedZenit)==1)
                 {
                     MessageBox.Show("Объект добавлен");
                     pictureBoxCollection.Image = obj.ShowZenits();
