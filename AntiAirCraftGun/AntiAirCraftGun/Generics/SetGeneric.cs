@@ -35,7 +35,7 @@ namespace AntiAircraftGun.Generics
         /// </summary>
         /// <param name="car">Добавляемый автомобиль</param>
         /// <returns></returns>
-        public bool Insert(T car)
+        public int Insert(T car)
         {
             if (_places.Count == _maxCount)
                 return false;
