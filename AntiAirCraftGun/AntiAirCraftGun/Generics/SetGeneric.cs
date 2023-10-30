@@ -30,7 +30,7 @@ namespace AntiAircraftGun.Generics
         /// </summary>
         /// <param name="car">Добавляемый автомобиль</param>
         /// <returns></returns>
-        public bool Insert(T car)
+        public int Insert(T car)
         {
             // Вставка в начало набора
             for (int i = 0; i < _places.Length; i++)
@@ -38,10 +38,10 @@ namespace AntiAircraftGun.Generics
                 if (_places[i] == null)
                 {
                     _places[i] = car;
-                    return true;
+                    return 1;
                 }
             }
-            return false; // Если нет пустых мест
+            return -1; // Если нет пустых мест
         }
         /// <summary>
         /// Добавление объекта в набор на конкретную позицию
@@ -49,15 +49,15 @@ namespace AntiAircraftGun.Generics
         /// <param name="car">Добавляемый автомобиль</param>
         /// <param name="position">Позиция</param>
         /// <returns></returns>
-        public bool Insert(T car, int position)
+        public int Insert(T car, int position)
         {
             // Проверка позиции
             if (position < 0 || position >= _places.Length)
-                return false;
+                return -1;
 
             // Проверка, что элемент массива по этой позиции пустой
             if (_places[position] != null)
-                return false;
+                return -1;
 
             // Проверка, что после вставляемого элемента в массиве есть пустой элемент
             for (int i = position + 1; i < _places.Length; i++)
@@ -70,11 +70,11 @@ namespace AntiAircraftGun.Generics
                         _places[j] = _places[j - 1];
                     }
                     _places[position] = car;
-                    return true;
+                    return 1;
                 }
             }
 
-            return false; // Если нет пустых мест справа
+            return -1; // Если нет пустых мест справа
         }
         /// <summary>
         /// Удаление объекта из набора с конкретной позиции

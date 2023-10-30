@@ -51,32 +51,26 @@ namespace AntiAircraftGun.Generics
         /// <param name="collect"></param>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public static bool operator +(AntiAirCraftGunGenericCollection<T, U> collect, T?
-        obj)
+        public static int operator +(AntiAirCraftGunGenericCollection<T,U> collect, T? obj)
         {
             if (obj == null)
-            {
-                return false;
-            }
-            return collect?._collection.Insert(obj) ?? false;
+                return -1;
+            return collect?._collection.Insert(obj) ?? -1;
         }
-    
         /// <summary>
         /// Перегрузка оператора вычитания
         /// </summary>
         /// <param name="collect"></param>
         /// <param name="pos"></param>
         /// <returns></returns>
-        public static T? operator -(AntiAirCraftGunGenericCollection<T, U> collect, int
-        pos)
+        public static bool operator -(AntiAirCraftGunGenericCollection<T, U> collect, int pos)
         {
-            T? obj = collect._collection.Get(pos);
-            if (obj != null)
-            {
-                collect._collection.Remove(pos);
-            }
-            return obj;
+        T? obj = collect._collection.Get(pos);
+        if (obj != null)
+            return collect._collection.Remove(pos);
+        return false;
         }
+        
         /// <summary>
         /// Получение объекта IMoveableObject
         /// </summary>
@@ -156,9 +150,21 @@ namespace AntiAircraftGun.Generics
                     if (y+distance_between_objects >= maxY)
                     {
                         y = 0;
-                        x += obj.GetWidth+10 + distance_between_objects;
+                        x += _placeSizeWidth;
                     }
                 }
+                if (obj == null) 
+                {
+                    // Увеличиваем координату Y для следующего объекта
+                    y += distance_between_objects;
+
+                    // Проверяем, если Y достигло максимума, изменяем X и сбрасываем Y
+                    if (y+distance_between_objects >= maxY)
+                    {
+                        y = 0;
+                        x += _placeSizeWidth;
+                    }
+                };
             }
         }
     }
