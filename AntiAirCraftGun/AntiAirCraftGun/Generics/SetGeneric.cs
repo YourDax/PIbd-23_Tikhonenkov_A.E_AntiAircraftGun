@@ -35,21 +35,20 @@ namespace AntiAircraftGun.Generics
         /// </summary>
         /// <param name="car">Добавляемый автомобиль</param>
         /// <returns></returns>
-        public int Insert(T car)
+        public bool Insert(T car)
         {
             if (_places.Count == _maxCount)
-                return -1;
+                return false;
             Insert(car, 0);
-            return 1;
-
+            return true;
         }
 
-        public int Insert(T car, int position)
+        public bool Insert(T car, int position)
         {
             if (!(position >= 0 && position <= Count && _places.Count < _maxCount))
-                return -1;
+                return false;
             _places.Insert(position, car);
-            return 1;
+            return true;
         }
 
         /// <summary>
@@ -63,8 +62,8 @@ namespace AntiAircraftGun.Generics
             if (position < 0 || position >= Count)
                 return false;
 
-            // Удаление объекта из массива, присвоив элементу массива значение null
-            _places[position] = null;
+            
+            _places.RemoveAt(position);
             return true;
         }
         /// <summary>
@@ -76,33 +75,16 @@ namespace AntiAircraftGun.Generics
         {
             get
             {
-                // TODO: Проверить позицию
-                if (position < 0 || position >= Count)
-                {
-                    MessageBox.Show("Индекс выходит за пределы диапазона");
+                if (!(position >= 0 && position < Count))
                     return null;
-                }
                 return _places[position];
             }
             set
             {
-                // TODO: Проверить позицию
-                if (position < 0 || position >= Count)
-                {
-                    MessageBox.Show("Индекс выходит за пределы диапазона");
+                if (!(position >= 0 && position < Count && _places.Count < _maxCount))
                     return;
-                }
-                // TODO: Проверить наличие доступных слотов в списке
-                if (_places.Count < _maxCount)
-                {
-                    // Вставить на указанную позицию
-                    _places.Insert(position, value);
-                }
-                else
-                {
-                    MessageBox.Show("Список уже заполнен");
-                    return;
-                }
+                _places.Insert(position, value);
+                return;
             }
         }
         /// <summary>

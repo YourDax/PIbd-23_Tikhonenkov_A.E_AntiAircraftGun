@@ -51,11 +51,11 @@ namespace AntiAircraftGun.Generics
         /// <param name="collect"></param>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public static int operator +(AntiAirCraftGunGenericCollection<T,U> collect, T? obj)
+        public static bool operator +(AntiAirCraftGunGenericCollection<T,U> collect, T? obj)
         {
             if (obj == null)
-                return -1;
-            return collect?._collection.Insert(obj) ?? -1;
+                return false;
+            return collect?._collection.Insert(obj) ?? false;
         }
         /// <summary>
         /// Перегрузка оператора вычитания
@@ -63,12 +63,12 @@ namespace AntiAircraftGun.Generics
         /// <param name="collect"></param>
         /// <param name="pos"></param>
         /// <returns></returns>
-        public static bool operator -(AntiAirCraftGunGenericCollection<T, U> collect, int pos)
+        public static T? operator -(AntiAirCraftGunGenericCollection<T, U> collect, int pos)
         {
-        T? obj = collect._collection.Get(pos);
-        if (obj != null)
-            return collect._collection.Remove(pos);
-        return false;
+            T? obj = collect._collection.Get(pos);
+            if (obj != null)
+                collect._collection.Remove(pos);
+            return obj;
         }
         
         /// <summary>
