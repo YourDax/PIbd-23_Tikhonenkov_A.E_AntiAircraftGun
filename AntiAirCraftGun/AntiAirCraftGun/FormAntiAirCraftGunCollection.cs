@@ -145,6 +145,7 @@ namespace AntiAircraftGun
                 MessageBox.Show("Не удалось удалить объект");
             }
         }
+        
 
         private void ButtonUpdateCollection_Click(object sender, EventArgs e)
         {

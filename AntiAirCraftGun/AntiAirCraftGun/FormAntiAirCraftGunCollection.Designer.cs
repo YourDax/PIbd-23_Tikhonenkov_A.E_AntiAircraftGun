@@ -92,6 +92,7 @@
             this.listBoxStorages.Name = "listBoxStorages";
             this.listBoxStorages.Size = new System.Drawing.Size(191, 94);
             this.listBoxStorages.TabIndex = 6;
+            this.listBoxStorages.SelectedIndexChanged += new System.EventHandler(this.ListBoxObjects_SelectedIndexChanged);
             // 
             // buttonAddCollection
             // 
