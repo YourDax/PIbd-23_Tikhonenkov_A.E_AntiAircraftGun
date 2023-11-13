@@ -27,7 +27,7 @@ namespace AntiAircraftGun.DrawingObjects
             AntiAirСraftGun = new EntityAntiAirCraftGun(speed, weight, bodyColor, additionalColor);
         }
 
-        public BaseDrawingAntiAirCraftGun(int speed, double weight, Color bodyColor, Color additionalColor, int width, int height, int carWidth, int carHeight)
+        protected BaseDrawingAntiAirCraftGun(int speed, double weight, Color bodyColor, Color additionalColor, int width, int height, int carWidth, int carHeight)
         {
             _pictureWidth = width;
             _pictureHeight = height;
