@@ -11,8 +11,8 @@ namespace AntiAircraftGun.DrawingObjects
     public class BaseDrawingAntiAirCraftGun
     {
         public EntityAntiAirCraftGun? AntiAirСraftGun { get; protected set; }
-        private readonly int _pictureWidth;
-        private readonly int _pictureHeight;
+        private int _pictureWidth;
+        private int _pictureHeight;
         protected int _startPosX;
         protected int _startPosY;
         protected int _zenitWidth = 110;
@@ -20,6 +20,8 @@ namespace AntiAircraftGun.DrawingObjects
 
         public BaseDrawingAntiAirCraftGun(int speed, double weight, Color bodyColor, Color additionalColor, int width, int height)
         {
+            if (width <= _zenitWidth || height <= _zenitHeight)
+                return;
             _pictureWidth = width;
             _pictureHeight = height;
             AntiAirСraftGun = new EntityAntiAirCraftGun(speed, weight, bodyColor, additionalColor);
@@ -52,8 +54,12 @@ namespace AntiAircraftGun.DrawingObjects
                 return;
             AntiAirСraftGun.BodyColor = col;
         }
+        public void ChangePictureBoxSize(int pictureBoxWidth, int pictureBoxHeight)
+        {
+            _pictureHeight = pictureBoxHeight;
+            _pictureWidth = pictureBoxWidth;
+        }
 
-        
         /// <summary>
         /// Координата X объекта
         /// </summary>

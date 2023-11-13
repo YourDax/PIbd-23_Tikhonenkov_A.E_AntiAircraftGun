@@ -23,7 +23,10 @@ namespace AntiAircraftGun.DrawingObjects
         }
         public void ChangeAddColor(Color col)
         {
-            ((EntityAdvancedAntiAirCraftGun)AntiAirСraftGun).AdditionalColor = col;
+            if (AntiAirСraftGun!=null)
+            {
+                ((EntityAdvancedAntiAirCraftGun)AntiAirСraftGun).DopColor = col;
+            }
         }
         public override void DrawTransport(Graphics g)
         {
