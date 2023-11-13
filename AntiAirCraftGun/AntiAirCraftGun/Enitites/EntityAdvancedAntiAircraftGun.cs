@@ -9,7 +9,7 @@ namespace AntiAircraftGun.Enitites
     public class EntityAdvancedAntiAirCraftGun : EntityAntiAirCraftGun
     {
         
-        public Color DopColor { get; private set; }
+        public Color DopColor { get; set; }
 
         public bool Rocket { get; private set; }
 

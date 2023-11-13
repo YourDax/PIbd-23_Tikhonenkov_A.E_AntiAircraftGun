@@ -16,9 +16,15 @@ namespace AntiAircraftGun.DrawingObjects
         public AdvancedDrawingAntiAirCraftGun(int speed, double weight, Color bodyColor, Color additionalColor, Color dopColor, bool rocket,bool radar, int width, int height) :
         base(speed, weight, bodyColor, additionalColor, width, height)
         {
-            AntiAirСraftGun = new EntityAdvancedAntiAirCraftGun(speed, weight, bodyColor, additionalColor, dopColor, rocket,radar);
+            if (AntiAirСraftGun!=null)
+            {
+                AntiAirСraftGun = new EntityAdvancedAntiAirCraftGun(speed, weight, bodyColor, additionalColor, dopColor, rocket, radar);
+            }
         }
-
+        public void ChangeAddColor(Color col)
+        {
+            ((EntityAdvancedAntiAirCraftGun)AntiAirСraftGun).AdditionalColor = col;
+        }
         public override void DrawTransport(Graphics g)
         {
             if (AntiAirСraftGun is not EntityAdvancedAntiAirCraftGun advancedGun)

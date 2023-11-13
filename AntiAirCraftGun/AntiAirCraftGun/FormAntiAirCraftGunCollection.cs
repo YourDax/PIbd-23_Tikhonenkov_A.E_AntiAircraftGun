@@ -90,6 +90,7 @@ namespace AntiAircraftGun
                 ReloadObjects();
             }
         }
+
         private void ButtonAddZenit_Click(object sender, EventArgs e)
         {
             if (listBoxStorages.SelectedIndex == -1)
@@ -103,12 +104,14 @@ namespace AntiAircraftGun
                 MessageBox.Show("Выбранный набор не найден.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            FormAntiAirCraftGun form = new();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                if (obj + form.SelectedZenit)
+            FormMonorailConfig form = new();
+            form.Show();
+            Action<DrawningMonorail>? monorailDelegate = new((m) => {
+                bool q = (obj + m);
+                if (q)
                 {
                     MessageBox.Show("Объект добавлен");
+                    m.ChangePictureBoxSize(pictureBoxCollection.Width, pictureBoxCollection.Height);
                     pictureBoxCollection.Image = obj.ShowZenits();
                 }
                 else

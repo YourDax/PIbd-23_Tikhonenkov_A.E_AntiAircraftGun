@@ -11,19 +11,19 @@ namespace AntiAircraftGun.Enitites
         /// <summary>
         /// Скорость
         /// </summary>
-        public int Speed { get; private set; }
+        public int Speed { get;  set; }
         /// <summary>
         /// Вес
         /// </summary>
-        public double Weight { get; private set; }
+        public double Weight { get;  set; }
         /// <summary>
         /// Основной цвет
         /// </summary>
-        public Color BodyColor { get; private set; }
+        public Color BodyColor { get;  set; }
         /// <summary>
         /// Шаг перемещения автомобиля
         /// </summary>
-        public Color AdditionalColor { get; private set; }
+        public Color AdditionalColor { get;  set; }
         /// <summary>
         /// Шаг перемещения автомобиля
         /// </summary>

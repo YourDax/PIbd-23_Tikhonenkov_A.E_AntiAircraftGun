@@ -25,7 +25,7 @@ namespace AntiAircraftGun.DrawingObjects
             AntiAirСraftGun = new EntityAntiAirCraftGun(speed, weight, bodyColor, additionalColor);
         }
 
-        protected BaseDrawingAntiAirCraftGun(int speed, double weight, Color bodyColor, Color additionalColor, int width, int height, int carWidth, int carHeight)
+        public BaseDrawingAntiAirCraftGun(int speed, double weight, Color bodyColor, Color additionalColor, int width, int height, int carWidth, int carHeight)
         {
             _pictureWidth = width;
             _pictureHeight = height;
@@ -46,6 +46,14 @@ namespace AntiAircraftGun.DrawingObjects
             }
 
         }
+        public void ChangeColor(Color col)
+        {
+            if (AntiAirСraftGun == null)
+                return;
+            AntiAirСraftGun.BodyColor = col;
+        }
+
+        
         /// <summary>
         /// Координата X объекта
         /// </summary>
