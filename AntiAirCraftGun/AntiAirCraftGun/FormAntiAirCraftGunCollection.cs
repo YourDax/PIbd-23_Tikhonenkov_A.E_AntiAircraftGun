@@ -106,7 +106,7 @@ namespace AntiAircraftGun
             }
             FormAntiAirCraftGunConfig form = new();
             form.Show();
-            CarDelegate carDelegate = new CarDelegate((m) => {
+            Action<BaseDrawingAntiAirCraftGun>? zenitDelegate = new((m) => {
                 bool q = (obj + m);
                 if (q)
                 {
@@ -119,11 +119,8 @@ namespace AntiAircraftGun
                     MessageBox.Show("Не удалось добавить объект");
                 }
             });
-
-            form.AddEvent(carDelegate);
-
+            form.AddEvent(zenitDelegate);
         }
-
         private void ButtonDeleteZenit_Click(object sender, EventArgs e)
         {
             if (listBoxStorages.SelectedIndex == -1)

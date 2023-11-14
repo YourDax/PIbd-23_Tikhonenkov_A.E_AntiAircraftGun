@@ -11,10 +11,7 @@ using System.Windows.Forms;
 
 namespace AntiAircraftGun
 {
-    /// <summary>
-    /// Делегат для передачи объекта-зенитной установки
-    /// </summary>
-    public delegate void CarDelegate(BaseDrawingAntiAirCraftGun zenit);
+    
 
     public partial class FormAntiAirCraftGunConfig : Form
     {
@@ -26,7 +23,7 @@ namespace AntiAircraftGun
         /// <summary>
         /// Событие для добавления зенитной установки
         /// </summary>
-        private event CarDelegate? EventAddZenit;
+        private event Action<BaseDrawingAntiAirCraftGun>? EventAddZenit;
 
         /// <summary>
         /// Конструктор формы
@@ -35,7 +32,6 @@ namespace AntiAircraftGun
         {
             InitializeComponent();
 
-            // Назначение обработчика события для панелей цвета и кнопки отмены
             panelBlack.MouseDown += PanelColor_MouseDown;
             panelGray.MouseDown += PanelColor_MouseDown;
             panelRed.MouseDown += PanelColor_MouseDown;
@@ -44,6 +40,8 @@ namespace AntiAircraftGun
             panelYellow.MouseDown += PanelColor_MouseDown;
             panelPurple.MouseDown += PanelColor_MouseDown;
             panelWhite.MouseDown += PanelColor_MouseDown;
+            labelBase.MouseDown += LabelObject_MouseDown;
+            labelAdvanced.MouseDown += LabelObject_MouseDown;
             buttonCancel.Click += (s, e) => Close();
         }
 
@@ -62,7 +60,7 @@ namespace AntiAircraftGun
         /// <summary>
         /// Добавление обработчика события для добавления зенитной установки
         /// </summary>
-        public void AddEvent(CarDelegate ev)
+        public void AddEvent(Action<BaseDrawingAntiAirCraftGun> ev)
         {
             if (EventAddZenit == null)
             {
@@ -135,8 +133,7 @@ namespace AntiAircraftGun
         /// </summary>
         private void PanelColor_MouseDown(object sender, MouseEventArgs e)
         {
-            (sender as Panel)?.DoDragDrop((sender as Panel)?.BackColor,
-                DragDropEffects.Move | DragDropEffects.Copy);
+            (sender as Panel)?.DoDragDrop((sender as Panel)?.BackColor,DragDropEffects.Move | DragDropEffects.Copy);
         }
 
         /// <summary>

@@ -28,340 +28,313 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBoxParameters = new System.Windows.Forms.GroupBox();
-            this.labelAdvanced = new System.Windows.Forms.Label();
-            this.labelBase = new System.Windows.Forms.Label();
-            this.groupBoxColor = new System.Windows.Forms.GroupBox();
-            this.panelPurple = new System.Windows.Forms.Panel();
-            this.panelBlack = new System.Windows.Forms.Panel();
-            this.panelGray = new System.Windows.Forms.Panel();
-            this.panelWhite = new System.Windows.Forms.Panel();
-            this.panelYellow = new System.Windows.Forms.Panel();
-            this.panelBlue = new System.Windows.Forms.Panel();
-            this.panelGreen = new System.Windows.Forms.Panel();
-            this.panelRed = new System.Windows.Forms.Panel();
-            this.checkBoxRocket = new System.Windows.Forms.CheckBox();
-            this.checkBoxRadar = new System.Windows.Forms.CheckBox();
-            this.numericUpDownWeight = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownSpeed = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBoxObject = new System.Windows.Forms.PictureBox();
-            this.labelColor = new System.Windows.Forms.Label();
-            this.labelAdditionalColor = new System.Windows.Forms.Label();
-            this.buttonAdd = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.allowPanel = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
-            this.groupBoxParameters.SuspendLayout();
-            this.groupBoxColor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWeight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpeed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).BeginInit();
-            this.allowPanel.SuspendLayout();
-            this.SuspendLayout();
+            panel1 = new Panel();
+            groupBoxParameters = new GroupBox();
+            labelAdvanced = new Label();
+            labelBase = new Label();
+            groupBoxColor = new GroupBox();
+            panelPurple = new Panel();
+            panelBlack = new Panel();
+            panelGray = new Panel();
+            panelWhite = new Panel();
+            panelYellow = new Panel();
+            panelBlue = new Panel();
+            panelGreen = new Panel();
+            panelRed = new Panel();
+            checkBoxRocket = new CheckBox();
+            checkBoxRadar = new CheckBox();
+            numericUpDownWeight = new NumericUpDown();
+            numericUpDownSpeed = new NumericUpDown();
+            label2 = new Label();
+            label1 = new Label();
+            pictureBoxObject = new PictureBox();
+            labelColor = new Label();
+            labelAdditionalColor = new Label();
+            buttonAdd = new Button();
+            buttonCancel = new Button();
+            allowPanel = new Panel();
+            panel1.SuspendLayout();
+            groupBoxParameters.SuspendLayout();
+            groupBoxColor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownWeight).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownSpeed).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxObject).BeginInit();
+            allowPanel.SuspendLayout();
+            SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.groupBoxParameters);
-            this.panel1.Location = new System.Drawing.Point(7, 9);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(574, 306);
-            this.panel1.TabIndex = 0;
+            panel1.Controls.Add(groupBoxParameters);
+            panel1.Location = new Point(7, 9);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(574, 306);
+            panel1.TabIndex = 0;
             // 
             // groupBoxParameters
             // 
-            this.groupBoxParameters.Controls.Add(this.labelAdvanced);
-            this.groupBoxParameters.Controls.Add(this.labelBase);
-            this.groupBoxParameters.Controls.Add(this.groupBoxColor);
-            this.groupBoxParameters.Controls.Add(this.checkBoxRocket);
-            this.groupBoxParameters.Controls.Add(this.checkBoxRadar);
-            this.groupBoxParameters.Controls.Add(this.numericUpDownWeight);
-            this.groupBoxParameters.Controls.Add(this.numericUpDownSpeed);
-            this.groupBoxParameters.Controls.Add(this.label2);
-            this.groupBoxParameters.Controls.Add(this.label1);
-            this.groupBoxParameters.Location = new System.Drawing.Point(5, 3);
-            this.groupBoxParameters.Name = "groupBoxParameters";
-            this.groupBoxParameters.Size = new System.Drawing.Size(566, 300);
-            this.groupBoxParameters.TabIndex = 0;
-            this.groupBoxParameters.TabStop = false;
-            this.groupBoxParameters.Text = "Параметры";
+            groupBoxParameters.Controls.Add(labelAdvanced);
+            groupBoxParameters.Controls.Add(labelBase);
+            groupBoxParameters.Controls.Add(groupBoxColor);
+            groupBoxParameters.Controls.Add(checkBoxRocket);
+            groupBoxParameters.Controls.Add(checkBoxRadar);
+            groupBoxParameters.Controls.Add(numericUpDownWeight);
+            groupBoxParameters.Controls.Add(numericUpDownSpeed);
+            groupBoxParameters.Controls.Add(label2);
+            groupBoxParameters.Controls.Add(label1);
+            groupBoxParameters.Location = new Point(5, 3);
+            groupBoxParameters.Name = "groupBoxParameters";
+            groupBoxParameters.Size = new Size(566, 300);
+            groupBoxParameters.TabIndex = 0;
+            groupBoxParameters.TabStop = false;
+            groupBoxParameters.Text = "Параметры";
             // 
             // labelAdvanced
             // 
-            this.labelAdvanced.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelAdvanced.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelAdvanced.Location = new System.Drawing.Point(427, 217);
-            this.labelAdvanced.Name = "labelAdvanced";
-            this.labelAdvanced.Size = new System.Drawing.Size(88, 40);
-            this.labelAdvanced.TabIndex = 8;
-            this.labelAdvanced.Text = "Продвинутый";
-            this.labelAdvanced.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelAdvanced.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabelObject_MouseDown);
+            labelAdvanced.Anchor = AnchorStyles.None;
+            labelAdvanced.BorderStyle = BorderStyle.FixedSingle;
+            labelAdvanced.Location = new Point(427, 217);
+            labelAdvanced.Name = "labelAdvanced";
+            labelAdvanced.Size = new Size(88, 40);
+            labelAdvanced.TabIndex = 8;
+            labelAdvanced.Text = "Продвинутый";
+            labelAdvanced.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // labelBase
             // 
-            this.labelBase.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelBase.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelBase.Location = new System.Drawing.Point(315, 217);
-            this.labelBase.Name = "labelBase";
-            this.labelBase.Size = new System.Drawing.Size(88, 40);
-            this.labelBase.TabIndex = 7;
-            this.labelBase.Text = "Простой";
-            this.labelBase.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelBase.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabelObject_MouseDown);
+            labelBase.Anchor = AnchorStyles.None;
+            labelBase.BorderStyle = BorderStyle.FixedSingle;
+            labelBase.Location = new Point(315, 217);
+            labelBase.Name = "labelBase";
+            labelBase.Size = new Size(88, 40);
+            labelBase.TabIndex = 7;
+            labelBase.Text = "Простой";
+            labelBase.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // groupBoxColor
             // 
-            this.groupBoxColor.Controls.Add(this.panelPurple);
-            this.groupBoxColor.Controls.Add(this.panelBlack);
-            this.groupBoxColor.Controls.Add(this.panelGray);
-            this.groupBoxColor.Controls.Add(this.panelWhite);
-            this.groupBoxColor.Controls.Add(this.panelYellow);
-            this.groupBoxColor.Controls.Add(this.panelBlue);
-            this.groupBoxColor.Controls.Add(this.panelGreen);
-            this.groupBoxColor.Controls.Add(this.panelRed);
-            this.groupBoxColor.Location = new System.Drawing.Point(287, 36);
-            this.groupBoxColor.Name = "groupBoxColor";
-            this.groupBoxColor.Size = new System.Drawing.Size(273, 151);
-            this.groupBoxColor.TabIndex = 6;
-            this.groupBoxColor.TabStop = false;
-            this.groupBoxColor.Text = "Цвета";
+            groupBoxColor.Controls.Add(panelPurple);
+            groupBoxColor.Controls.Add(panelBlack);
+            groupBoxColor.Controls.Add(panelGray);
+            groupBoxColor.Controls.Add(panelWhite);
+            groupBoxColor.Controls.Add(panelYellow);
+            groupBoxColor.Controls.Add(panelBlue);
+            groupBoxColor.Controls.Add(panelGreen);
+            groupBoxColor.Controls.Add(panelRed);
+            groupBoxColor.Location = new Point(287, 36);
+            groupBoxColor.Name = "groupBoxColor";
+            groupBoxColor.Size = new Size(273, 151);
+            groupBoxColor.TabIndex = 6;
+            groupBoxColor.TabStop = false;
+            groupBoxColor.Text = "Цвета";
             // 
             // panelPurple
             // 
-            this.panelPurple.BackColor = System.Drawing.Color.Purple;
-            this.panelPurple.Location = new System.Drawing.Point(196, 83);
-            this.panelPurple.Name = "panelPurple";
-            this.panelPurple.Size = new System.Drawing.Size(50, 50);
-            this.panelPurple.TabIndex = 2;
+            panelPurple.BackColor = Color.Purple;
+            panelPurple.Location = new Point(196, 83);
+            panelPurple.Name = "panelPurple";
+            panelPurple.Size = new Size(50, 50);
+            panelPurple.TabIndex = 2;
             // 
             // panelBlack
             // 
-            this.panelBlack.BackColor = System.Drawing.Color.Black;
-            this.panelBlack.Location = new System.Drawing.Point(140, 83);
-            this.panelBlack.Name = "panelBlack";
-            this.panelBlack.Size = new System.Drawing.Size(50, 50);
-            this.panelBlack.TabIndex = 2;
+            panelBlack.BackColor = Color.Black;
+            panelBlack.Location = new Point(140, 83);
+            panelBlack.Name = "panelBlack";
+            panelBlack.Size = new Size(50, 50);
+            panelBlack.TabIndex = 2;
             // 
             // panelGray
             // 
-            this.panelGray.BackColor = System.Drawing.Color.Gray;
-            this.panelGray.Location = new System.Drawing.Point(84, 83);
-            this.panelGray.Name = "panelGray";
-            this.panelGray.Size = new System.Drawing.Size(50, 50);
-            this.panelGray.TabIndex = 2;
+            panelGray.BackColor = Color.Gray;
+            panelGray.Location = new Point(84, 83);
+            panelGray.Name = "panelGray";
+            panelGray.Size = new Size(50, 50);
+            panelGray.TabIndex = 2;
             // 
             // panelWhite
             // 
-            this.panelWhite.BackColor = System.Drawing.Color.White;
-            this.panelWhite.Location = new System.Drawing.Point(28, 83);
-            this.panelWhite.Name = "panelWhite";
-            this.panelWhite.Size = new System.Drawing.Size(50, 50);
-            this.panelWhite.TabIndex = 2;
+            panelWhite.BackColor = Color.White;
+            panelWhite.Location = new Point(28, 83);
+            panelWhite.Name = "panelWhite";
+            panelWhite.Size = new Size(50, 50);
+            panelWhite.TabIndex = 2;
             // 
             // panelYellow
             // 
-            this.panelYellow.BackColor = System.Drawing.Color.Yellow;
-            this.panelYellow.Location = new System.Drawing.Point(196, 27);
-            this.panelYellow.Name = "panelYellow";
-            this.panelYellow.Size = new System.Drawing.Size(50, 50);
-            this.panelYellow.TabIndex = 2;
+            panelYellow.BackColor = Color.Yellow;
+            panelYellow.Location = new Point(196, 27);
+            panelYellow.Name = "panelYellow";
+            panelYellow.Size = new Size(50, 50);
+            panelYellow.TabIndex = 2;
             // 
             // panelBlue
             // 
-            this.panelBlue.BackColor = System.Drawing.Color.Blue;
-            this.panelBlue.Location = new System.Drawing.Point(140, 27);
-            this.panelBlue.Name = "panelBlue";
-            this.panelBlue.Size = new System.Drawing.Size(50, 50);
-            this.panelBlue.TabIndex = 2;
+            panelBlue.BackColor = Color.Blue;
+            panelBlue.Location = new Point(140, 27);
+            panelBlue.Name = "panelBlue";
+            panelBlue.Size = new Size(50, 50);
+            panelBlue.TabIndex = 2;
             // 
             // panelGreen
             // 
-            this.panelGreen.BackColor = System.Drawing.Color.Green;
-            this.panelGreen.Location = new System.Drawing.Point(84, 27);
-            this.panelGreen.Name = "panelGreen";
-            this.panelGreen.Size = new System.Drawing.Size(50, 50);
-            this.panelGreen.TabIndex = 1;
+            panelGreen.BackColor = Color.Green;
+            panelGreen.Location = new Point(84, 27);
+            panelGreen.Name = "panelGreen";
+            panelGreen.Size = new Size(50, 50);
+            panelGreen.TabIndex = 1;
             // 
             // panelRed
             // 
-            this.panelRed.BackColor = System.Drawing.Color.Red;
-            this.panelRed.Location = new System.Drawing.Point(28, 27);
-            this.panelRed.Name = "panelRed";
-            this.panelRed.Size = new System.Drawing.Size(50, 50);
-            this.panelRed.TabIndex = 0;
+            panelRed.BackColor = Color.Red;
+            panelRed.Location = new Point(28, 27);
+            panelRed.Name = "panelRed";
+            panelRed.Size = new Size(50, 50);
+            panelRed.TabIndex = 0;
             // 
             // checkBoxRocket
             // 
-            this.checkBoxRocket.AutoSize = true;
-            this.checkBoxRocket.Location = new System.Drawing.Point(41, 229);
-            this.checkBoxRocket.Name = "checkBoxRocket";
-            this.checkBoxRocket.Size = new System.Drawing.Size(165, 19);
-            this.checkBoxRocket.TabIndex = 5;
-            this.checkBoxRocket.Text = "Признак наличия ракеты";
-            this.checkBoxRocket.UseVisualStyleBackColor = true;
+            checkBoxRocket.AutoSize = true;
+            checkBoxRocket.Location = new Point(41, 229);
+            checkBoxRocket.Name = "checkBoxRocket";
+            checkBoxRocket.Size = new Size(165, 19);
+            checkBoxRocket.TabIndex = 5;
+            checkBoxRocket.Text = "Признак наличия ракеты";
+            checkBoxRocket.UseVisualStyleBackColor = true;
             // 
             // checkBoxRadar
             // 
-            this.checkBoxRadar.AutoSize = true;
-            this.checkBoxRadar.Location = new System.Drawing.Point(41, 189);
-            this.checkBoxRadar.Name = "checkBoxRadar";
-            this.checkBoxRadar.Size = new System.Drawing.Size(164, 19);
-            this.checkBoxRadar.TabIndex = 4;
-            this.checkBoxRadar.Text = "Признак наличия радара";
-            this.checkBoxRadar.UseVisualStyleBackColor = true;
+            checkBoxRadar.AutoSize = true;
+            checkBoxRadar.Location = new Point(41, 189);
+            checkBoxRadar.Name = "checkBoxRadar";
+            checkBoxRadar.Size = new Size(164, 19);
+            checkBoxRadar.TabIndex = 4;
+            checkBoxRadar.Text = "Признак наличия радара";
+            checkBoxRadar.UseVisualStyleBackColor = true;
             // 
             // numericUpDownWeight
             // 
-            this.numericUpDownWeight.Location = new System.Drawing.Point(128, 82);
-            this.numericUpDownWeight.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUpDownWeight.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.numericUpDownWeight.Name = "numericUpDownWeight";
-            this.numericUpDownWeight.Size = new System.Drawing.Size(120, 23);
-            this.numericUpDownWeight.TabIndex = 3;
-            this.numericUpDownWeight.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
+            numericUpDownWeight.Location = new Point(128, 82);
+            numericUpDownWeight.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
+            numericUpDownWeight.Minimum = new decimal(new int[] { 100, 0, 0, 0 });
+            numericUpDownWeight.Name = "numericUpDownWeight";
+            numericUpDownWeight.Size = new Size(120, 23);
+            numericUpDownWeight.TabIndex = 3;
+            numericUpDownWeight.Value = new decimal(new int[] { 100, 0, 0, 0 });
             // 
             // numericUpDownSpeed
             // 
-            this.numericUpDownSpeed.Location = new System.Drawing.Point(128, 36);
-            this.numericUpDownSpeed.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUpDownSpeed.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.numericUpDownSpeed.Name = "numericUpDownSpeed";
-            this.numericUpDownSpeed.Size = new System.Drawing.Size(120, 23);
-            this.numericUpDownSpeed.TabIndex = 2;
-            this.numericUpDownSpeed.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
+            numericUpDownSpeed.Location = new Point(128, 36);
+            numericUpDownSpeed.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
+            numericUpDownSpeed.Minimum = new decimal(new int[] { 100, 0, 0, 0 });
+            numericUpDownSpeed.Name = "numericUpDownSpeed";
+            numericUpDownSpeed.Size = new Size(120, 23);
+            numericUpDownSpeed.TabIndex = 2;
+            numericUpDownSpeed.Value = new decimal(new int[] { 100, 0, 0, 0 });
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(44, 84);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(26, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Вес";
+            label2.AutoSize = true;
+            label2.Location = new Point(44, 84);
+            label2.Name = "label2";
+            label2.Size = new Size(26, 15);
+            label2.TabIndex = 1;
+            label2.Text = "Вес";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Скорость";
+            label1.AutoSize = true;
+            label1.Location = new Point(44, 38);
+            label1.Name = "label1";
+            label1.Size = new Size(59, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Скорость";
             // 
             // pictureBoxObject
             // 
-            this.pictureBoxObject.Location = new System.Drawing.Point(41, 85);
-            this.pictureBoxObject.Name = "pictureBoxObject";
-            this.pictureBoxObject.Size = new System.Drawing.Size(227, 141);
-            this.pictureBoxObject.TabIndex = 1;
-            this.pictureBoxObject.TabStop = false;
+            pictureBoxObject.Location = new Point(41, 85);
+            pictureBoxObject.Name = "pictureBoxObject";
+            pictureBoxObject.Size = new Size(227, 141);
+            pictureBoxObject.TabIndex = 1;
+            pictureBoxObject.TabStop = false;
             // 
             // labelColor
             // 
-            this.labelColor.AllowDrop = true;
-            this.labelColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelColor.Location = new System.Drawing.Point(20, 24);
-            this.labelColor.Name = "labelColor";
-            this.labelColor.Size = new System.Drawing.Size(120, 32);
-            this.labelColor.TabIndex = 2;
-            this.labelColor.Text = "Цвет";
-            this.labelColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelColor.DragDrop += new System.Windows.Forms.DragEventHandler(this.colorLabel_DragDrop);
-            this.labelColor.DragEnter += new System.Windows.Forms.DragEventHandler(this.colorLabel_DragEnter);
+            labelColor.AllowDrop = true;
+            labelColor.BorderStyle = BorderStyle.FixedSingle;
+            labelColor.Location = new Point(20, 24);
+            labelColor.Name = "labelColor";
+            labelColor.Size = new Size(120, 32);
+            labelColor.TabIndex = 2;
+            labelColor.Text = "Цвет";
+            labelColor.TextAlign = ContentAlignment.MiddleCenter;
+            labelColor.DragDrop += colorLabel_DragDrop;
+            labelColor.DragEnter += colorLabel_DragEnter;
             // 
             // labelAdditionalColor
             // 
-            this.labelAdditionalColor.AllowDrop = true;
-            this.labelAdditionalColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelAdditionalColor.Location = new System.Drawing.Point(169, 24);
-            this.labelAdditionalColor.Name = "labelAdditionalColor";
-            this.labelAdditionalColor.Size = new System.Drawing.Size(120, 32);
-            this.labelAdditionalColor.TabIndex = 3;
-            this.labelAdditionalColor.Text = "Доп.Цвет";
-            this.labelAdditionalColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelAdditionalColor.DragDrop += new System.Windows.Forms.DragEventHandler(this.addColorLabel_DragDrop);
-            this.labelAdditionalColor.DragEnter += new System.Windows.Forms.DragEventHandler(this.colorLabel_DragEnter);
+            labelAdditionalColor.AllowDrop = true;
+            labelAdditionalColor.BorderStyle = BorderStyle.FixedSingle;
+            labelAdditionalColor.Location = new Point(169, 24);
+            labelAdditionalColor.Name = "labelAdditionalColor";
+            labelAdditionalColor.Size = new Size(120, 32);
+            labelAdditionalColor.TabIndex = 3;
+            labelAdditionalColor.Text = "Доп.Цвет";
+            labelAdditionalColor.TextAlign = ContentAlignment.MiddleCenter;
+            labelAdditionalColor.DragDrop += addColorLabel_DragDrop;
+            labelAdditionalColor.DragEnter += colorLabel_DragEnter;
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(587, 278);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(164, 37);
-            this.buttonAdd.TabIndex = 4;
-            this.buttonAdd.Text = "Добавить";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.addButton_Click);
+            buttonAdd.Location = new Point(587, 278);
+            buttonAdd.Name = "buttonAdd";
+            buttonAdd.Size = new Size(164, 37);
+            buttonAdd.TabIndex = 4;
+            buttonAdd.Text = "Добавить";
+            buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Click += addButton_Click;
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(757, 278);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(152, 37);
-            this.buttonCancel.TabIndex = 5;
-            this.buttonCancel.Text = "Отмена";
-            this.buttonCancel.UseVisualStyleBackColor = true;
+            buttonCancel.Location = new Point(757, 278);
+            buttonCancel.Name = "buttonCancel";
+            buttonCancel.Size = new Size(152, 37);
+            buttonCancel.TabIndex = 5;
+            buttonCancel.Text = "Отмена";
+            buttonCancel.UseVisualStyleBackColor = true;
             // 
             // allowPanel
             // 
-            this.allowPanel.AllowDrop = true;
-            this.allowPanel.Controls.Add(this.labelAdditionalColor);
-            this.allowPanel.Controls.Add(this.labelColor);
-            this.allowPanel.Controls.Add(this.pictureBoxObject);
-            this.allowPanel.Location = new System.Drawing.Point(589, 9);
-            this.allowPanel.Name = "allowPanel";
-            this.allowPanel.Size = new System.Drawing.Size(316, 263);
-            this.allowPanel.TabIndex = 6;
-            this.allowPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.allowPanel_DragDrop);
-            this.allowPanel.DragEnter += new System.Windows.Forms.DragEventHandler(this.allowPanel_DragEnter);
+            allowPanel.AllowDrop = true;
+            allowPanel.Controls.Add(labelAdditionalColor);
+            allowPanel.Controls.Add(labelColor);
+            allowPanel.Controls.Add(pictureBoxObject);
+            allowPanel.Location = new Point(589, 9);
+            allowPanel.Name = "allowPanel";
+            allowPanel.Size = new Size(316, 263);
+            allowPanel.TabIndex = 6;
+            allowPanel.DragDrop += allowPanel_DragDrop;
+            allowPanel.DragEnter += allowPanel_DragEnter;
             // 
             // FormAntiAirCraftGunConfig
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(912, 327);
-            this.Controls.Add(this.allowPanel);
-            this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.buttonAdd);
-            this.Controls.Add(this.panel1);
-            this.Name = "FormAntiAirCraftGunConfig";
-            this.Text = "FormAntiAirCraftGunConfig";
-            this.panel1.ResumeLayout(false);
-            this.groupBoxParameters.ResumeLayout(false);
-            this.groupBoxParameters.PerformLayout();
-            this.groupBoxColor.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWeight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpeed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).EndInit();
-            this.allowPanel.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(912, 327);
+            Controls.Add(allowPanel);
+            Controls.Add(buttonCancel);
+            Controls.Add(buttonAdd);
+            Controls.Add(panel1);
+            Name = "FormAntiAirCraftGunConfig";
+            Text = "FormAntiAirCraftGunConfig";
+            panel1.ResumeLayout(false);
+            groupBoxParameters.ResumeLayout(false);
+            groupBoxParameters.PerformLayout();
+            groupBoxColor.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)numericUpDownWeight).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownSpeed).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxObject).EndInit();
+            allowPanel.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
