@@ -14,6 +14,18 @@ namespace AntiAircraftGun.Generics
     internal class AntiAirCraftGunGenericStorage
     {
         /// <summary>
+        /// Разделитель для записи ключа и значения элемента словаря
+        /// </summary>
+        private static readonly char _separatorForKeyValue = '|';
+        /// <summary>
+        /// Разделитель для записей коллекции данных в файл
+        /// </summary>
+        private readonly char _separatorRecords = ';';
+        /// <summary>
+        /// Разделитель для записи информации по объекту в файл
+        /// </summary>
+        private static readonly char _separatorForObject = ':';
+        /// <summary>
         /// Словарь (хранилище)
         /// </summary>
         readonly Dictionary<string, AntiAirCraftGunGenericCollection<BaseDrawingAntiAirCraftGun, DrawingObjectAntiAirCraftGun>> _zenitStorages;
@@ -91,5 +103,91 @@ namespace AntiAircraftGun.Generics
                 }
             }
         }
+        /// <summary>
+        /// Сохранение информации по автомобилям в хранилище в файл
+        /// </summary>
+        /// <param name="filename">Путь и имя файла</param>
+        /// <returns>true - сохранение прошло успешно, false - ошибка при сохранении данных</returns>
+        public bool SaveData(string filename)
+        {
+            if (File.Exists(filename))
+            {
+                File.Delete(filename);
+            }
+            StringBuilder data = new();
+            foreach (KeyValuePair<string,
+            AntiAirCraftGunGenericCollection<BaseDrawingAntiAirCraftGun, DrawingObjectAntiAirCraftGun>> record in _zenitStorages)
+            {
+                StringBuilder records = new();
+                foreach (BaseDrawingAntiAirCraftGun? elem in record.Value.GetCars)
+                {
+                    records.Append($"{elem?.GetDataForSave(_separatorForObject)}{_separatorRecords}");
+                }
+                data.AppendLine($"{record.Key}{_separatorForKeyValue}{records}");
+            }
+            if (data.Length == 0)
+            {
+                return false;
+            }
+            using FileStream fs = new(filename, FileMode.Create);
+            byte[] info = new
+            UTF8Encoding(true).GetBytes($"CarStorage{Environment.NewLine}{data}");
+            fs.Write(info, 0, info.Length);
+            return true;
+        }
+        /// <summary>
+        /// Загрузка информации по автомобилям в хранилище из файла
+        /// </summary>
+        /// <param name="filename">Путь и имя файла</param>
+        /// <returns>true - загрузка прошла успешно, false - ошибка при загрузке данных</returns>
+        public bool LoadData(string filename)
+        {
+            if (!File.Exists(filename))
+            {
+                return false;
+            }
+            using (StreamReader sr = new(filename))
+            {
+                string str = sr.ReadLine();
+                var strs = str.Split(new char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+                if (strs == null || strs.Length == 0)
+                {
+                    return false;
+                }
+                if (!strs[0].StartsWith("CarStorage"))
+                {
+                    return false;
+                }
+                _zenitStorages.Clear();
+                do
+                {
+                    string[] record = str.Split(_separatorForKeyValue, StringSplitOptions.RemoveEmptyEntries);
+                    if (record.Length != 2)
+                    {
+                        str = sr.ReadLine();
+                        continue;
+                    }
+                    AntiAirCraftGunGenericCollection<BaseDrawingAntiAirCraftGun, DrawingObjectAntiAirCraftGun> collection = new(_pictureWidth, _pictureHeight);
+                    string[] set = record[1].Split(_separatorRecords, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string elem in set)
+                    {
+                        BaseDrawingAntiAirCraftGun? zenit =
+                        elem?.CreateDrawningAntiAirCraftGun(_separatorForObject, _pictureWidth, _pictureHeight);
+                        if (zenit != null)
+                        {
+                            if (!(collection + zenit))
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                    _zenitStorages.Add(record[0], collection);
+
+                    str = sr.ReadLine();
+                } while (str != null);
+            }
+            return true;
+        }
     }
 }
+    

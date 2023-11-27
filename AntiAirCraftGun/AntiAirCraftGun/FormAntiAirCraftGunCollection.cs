@@ -165,5 +165,52 @@ namespace AntiAircraftGun
             pictureBoxCollection.Image = obj.ShowZenits();
 
         }
+        /// <summary>
+        /// Обработка нажатия "Сохранение"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (_storage.SaveData(saveFileDialog.FileName))
+                {
+                    MessageBox.Show("Сохранение прошло успешно",
+                    "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Не сохранилось", "Результат",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        /// <summary>
+        /// Обработка нажатия "Загрузка"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (_storage.LoadData(openFileDialog.FileName))
+                {
+                    MessageBox.Show("Загрузка прошла успешно",
+                    "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    foreach (var collection in _storage.Keys)
+                    {
+                        listBoxStorages.Items.Add(collection);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Не загрузилось", "Результат",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
     }
 }

@@ -13,6 +13,10 @@ namespace AntiAircraftGun.Generics
         where U : IMoveableObject
     {
         /// <summary>
+        /// Получение объектов коллекции
+        /// </summary>
+        public IEnumerable<T?> GetCars => _collection.GetZenits();
+        /// <summary>
         /// Ширина окна прорисовки
         /// </summary>
         private readonly int _pictureWidth;

@@ -39,14 +39,21 @@
             this.buttonUpdateColletion = new System.Windows.Forms.Button();
             this.buttonDeleteZenit = new System.Windows.Forms.Button();
             this.buttonAddZenit = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCollection)).BeginInit();
             this.panelTools.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxCollection
             // 
-            this.pictureBoxCollection.Location = new System.Drawing.Point(12, 12);
+            this.pictureBoxCollection.Location = new System.Drawing.Point(12, 50);
             this.pictureBoxCollection.Name = "pictureBoxCollection";
             this.pictureBoxCollection.Size = new System.Drawing.Size(711, 571);
             this.pictureBoxCollection.TabIndex = 0;
@@ -59,7 +66,7 @@
             this.panelTools.Controls.Add(this.buttonUpdateColletion);
             this.panelTools.Controls.Add(this.buttonDeleteZenit);
             this.panelTools.Controls.Add(this.buttonAddZenit);
-            this.panelTools.Location = new System.Drawing.Point(729, 14);
+            this.panelTools.Location = new System.Drawing.Point(729, 50);
             this.panelTools.Name = "panelTools";
             this.panelTools.Size = new System.Drawing.Size(234, 568);
             this.panelTools.TabIndex = 1;
@@ -151,13 +158,57 @@
             this.buttonAddZenit.UseVisualStyleBackColor = true;
             this.buttonAddZenit.Click += new System.EventHandler(this.ButtonAddZenit_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(971, 24);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "File";
+            // 
+            // toolStripMenuItem
+            // 
+            this.toolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SaveToolStripMenuItem,
+            this.LoadToolStripMenuItem});
+            this.toolStripMenuItem.Name = "toolStripMenuItem";
+            this.toolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.toolStripMenuItem.Text = "Файл";
+            // 
+            // SaveToolStripMenuItem
+            // 
+            this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.SaveToolStripMenuItem.Text = "Сохранить";
+            this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
+            // 
+            // LoadToolStripMenuItem
+            // 
+            this.LoadToolStripMenuItem.Name = "LoadToolStripMenuItem";
+            this.LoadToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.LoadToolStripMenuItem.Text = "Загрузить";
+            this.LoadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItem_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.Filter = "txt file | *.txt";
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "txt file | *.txt";
+            // 
             // FormAntiAirCraftGunCollection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(971, 595);
+            this.ClientSize = new System.Drawing.Size(971, 633);
             this.Controls.Add(this.panelTools);
             this.Controls.Add(this.pictureBoxCollection);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormAntiAirCraftGunCollection";
             this.Text = "FormAntiAirCraftGunCollection";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCollection)).EndInit();
@@ -165,7 +216,10 @@
             this.panelTools.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -182,5 +236,11 @@
         private ListBox listBoxStorages;
         private Button buttonAddCollection;
         private Button buttonDelCollection;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem toolStripMenuItem;
+        private ToolStripMenuItem SaveToolStripMenuItem;
+        private ToolStripMenuItem LoadToolStripMenuItem;
+        private OpenFileDialog openFileDialog;
+        private SaveFileDialog saveFileDialog;
     }
 }
