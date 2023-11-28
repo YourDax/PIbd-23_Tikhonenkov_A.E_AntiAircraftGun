@@ -129,11 +129,16 @@ namespace AntiAircraftGun.Generics
             {
                 return false;
             }
-            using FileStream fs = new(filename, FileMode.Create);
-            byte[] info = new
-            UTF8Encoding(true).GetBytes($"CarStorage{Environment.NewLine}{data}");
-            fs.Write(info, 0, info.Length);
-            return true;
+            string toWrite = $"CarStorage{Environment.NewLine}{data}";
+            var strs = toWrite.Split(new char[] { '\n', '\r' },  StringSplitOptions.RemoveEmptyEntries);
+            using (StreamWriter sw = new(filename))
+            {
+                foreach (var str in strs)
+                {
+                    sw.WriteLine(str);
+                }
+            }
+            return true;           
         }
         /// <summary>
         /// Загрузка информации по автомобилям в хранилище из файла

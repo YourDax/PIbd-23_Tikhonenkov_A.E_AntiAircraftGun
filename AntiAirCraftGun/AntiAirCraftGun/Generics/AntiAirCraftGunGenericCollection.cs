@@ -130,7 +130,7 @@ namespace AntiAircraftGun.Generics
 
             foreach (var zenit in _collection.GetZenits())
             {
-                // TODO: Получение объекта
+                
                 T? obj = zenit;
 
                 if (obj != null)
