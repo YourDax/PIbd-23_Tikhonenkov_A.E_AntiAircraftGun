@@ -30,6 +30,8 @@
         {
             this.pictureBoxCollection = new System.Windows.Forms.PictureBox();
             this.panelTools = new System.Windows.Forms.Panel();
+            this.ButtonSortByColor = new System.Windows.Forms.Button();
+            this.ButtonSortByType = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBoxStorageName = new System.Windows.Forms.TextBox();
             this.listBoxStorages = new System.Windows.Forms.ListBox();
@@ -61,6 +63,8 @@
             // 
             // panelTools
             // 
+            this.panelTools.Controls.Add(this.ButtonSortByColor);
+            this.panelTools.Controls.Add(this.ButtonSortByType);
             this.panelTools.Controls.Add(this.panel1);
             this.panelTools.Controls.Add(this.maskedTextBoxNumber);
             this.panelTools.Controls.Add(this.buttonUpdateColletion);
@@ -72,13 +76,33 @@
             this.panelTools.TabIndex = 1;
             this.panelTools.Tag = "";
             // 
+            // ButtonSortByColor
+            // 
+            this.ButtonSortByColor.Location = new System.Drawing.Point(25, 344);
+            this.ButtonSortByColor.Name = "ButtonSortByColor";
+            this.ButtonSortByColor.Size = new System.Drawing.Size(193, 35);
+            this.ButtonSortByColor.TabIndex = 10;
+            this.ButtonSortByColor.Text = "Сортировка по цвету";
+            this.ButtonSortByColor.UseVisualStyleBackColor = true;
+            this.ButtonSortByColor.Click += new System.EventHandler(this.ButtonSortByColor_Click);
+            // 
+            // ButtonSortByType
+            // 
+            this.ButtonSortByType.Location = new System.Drawing.Point(27, 303);
+            this.ButtonSortByType.Name = "ButtonSortByType";
+            this.ButtonSortByType.Size = new System.Drawing.Size(193, 35);
+            this.ButtonSortByType.TabIndex = 9;
+            this.ButtonSortByType.Text = "Сортировка по типу";
+            this.ButtonSortByType.UseVisualStyleBackColor = true;
+            this.ButtonSortByType.Click += new System.EventHandler(this.ButtonSortByType_Click);
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.textBoxStorageName);
             this.panel1.Controls.Add(this.listBoxStorages);
             this.panel1.Controls.Add(this.buttonAddCollection);
             this.panel1.Controls.Add(this.buttonDelCollection);
-            this.panel1.Location = new System.Drawing.Point(15, 52);
+            this.panel1.Location = new System.Drawing.Point(15, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(215, 294);
             this.panel1.TabIndex = 8;
@@ -242,5 +266,7 @@
         private ToolStripMenuItem LoadToolStripMenuItem;
         private OpenFileDialog openFileDialog;
         private SaveFileDialog saveFileDialog;
+        private Button ButtonSortByColor;
+        private Button ButtonSortByType;
     }
 }

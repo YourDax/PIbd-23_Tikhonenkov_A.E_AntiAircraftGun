@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace AntiAircraftGun.Generics
 {
@@ -28,11 +29,11 @@ namespace AntiAircraftGun.Generics
         /// <summary>
         /// Словарь (хранилище)
         /// </summary>
-        readonly Dictionary<string, AntiAirCraftGunGenericCollection<BaseDrawingAntiAirCraftGun, DrawingObjectAntiAirCraftGun>> _zenitStorages;
+        readonly Dictionary<AntiAirCraftGunCollectionInfo, AntiAirCraftGunGenericCollection<BaseDrawingAntiAirCraftGun, DrawingObjectAntiAirCraftGun>> _zenitStorages;
         /// <summary>
         /// Возвращение списка названий наборов
         /// </summary>
-        public List<string> Keys => _zenitStorages.Keys.ToList();
+        public List<AntiAirCraftGunCollectionInfo> Keys => _zenitStorages.Keys.ToList();
         /// <summary>
         /// Ширина окна отрисовки
         /// </summary>
@@ -48,7 +49,7 @@ namespace AntiAircraftGun.Generics
         /// <param name="pictureHeight"></param>
         public AntiAirCraftGunGenericStorage(int pictureWidth, int pictureHeight)
         {
-            _zenitStorages = new Dictionary<string, AntiAirCraftGunGenericCollection<BaseDrawingAntiAirCraftGun, DrawingObjectAntiAirCraftGun>>();
+            _zenitStorages = new Dictionary<AntiAirCraftGunCollectionInfo, AntiAirCraftGunGenericCollection<BaseDrawingAntiAirCraftGun, DrawingObjectAntiAirCraftGun>>();
             _pictureWidth = pictureWidth;
             _pictureHeight = pictureHeight;
         }
@@ -59,13 +60,13 @@ namespace AntiAircraftGun.Generics
         public void AddSet(string name)
         {
             // TODO: Прописать логику для добавления набора
-            if (_zenitStorages.ContainsKey(name))
+            if (_zenitStorages.ContainsKey(new AntiAirCraftGunCollectionInfo(name, string.Empty)))
             {
                 MessageBox.Show("Набор с таким именем уже существует");
                 return;
             }
             
-            _zenitStorages.Add(name, new AntiAirCraftGunGenericCollection<BaseDrawingAntiAirCraftGun, DrawingObjectAntiAirCraftGun>(_pictureWidth, _pictureHeight));
+            _zenitStorages.Add(new AntiAirCraftGunCollectionInfo(name,string.Empty), new AntiAirCraftGunGenericCollection<BaseDrawingAntiAirCraftGun, DrawingObjectAntiAirCraftGun>(_pictureWidth, _pictureHeight));
         }
 
         /// <summary>
@@ -75,12 +76,12 @@ namespace AntiAircraftGun.Generics
         public void DelSet(string name)
         {
             // TODO: Прописать логику для удаления набора
-            if (!_zenitStorages.ContainsKey(name))
+            if (!_zenitStorages.ContainsKey(new AntiAirCraftGunCollectionInfo(name, string.Empty)))
             {
                 return;
             }
 
-            _zenitStorages.Remove(name);
+            _zenitStorages.Remove(new AntiAirCraftGunCollectionInfo(name, string.Empty));
         }
         /// <summary>
         /// Доступ к набору
@@ -92,10 +93,11 @@ namespace AntiAircraftGun.Generics
         {
             get
             {
+                AntiAirCraftGunCollectionInfo indobj = new AntiAirCraftGunCollectionInfo(ind, string.Empty);
                 // TODO: Продумать логику получения набора
-                if (_zenitStorages.ContainsKey(ind))
+                if (_zenitStorages.ContainsKey(indobj))
                 {
-                    return _zenitStorages[ind];
+                    return _zenitStorages[indobj];
                 }
                 else
                 {
@@ -115,15 +117,14 @@ namespace AntiAircraftGun.Generics
                 File.Delete(filename);
             }
             StringBuilder data = new();
-            foreach (KeyValuePair<string,
-            AntiAirCraftGunGenericCollection<BaseDrawingAntiAirCraftGun, DrawingObjectAntiAirCraftGun>> record in _zenitStorages)
+            foreach (KeyValuePair<AntiAirCraftGunCollectionInfo, AntiAirCraftGunGenericCollection<BaseDrawingAntiAirCraftGun, DrawingObjectAntiAirCraftGun>> record in _zenitStorages)
             {
                 StringBuilder records = new();
                 foreach (BaseDrawingAntiAirCraftGun? elem in record.Value.GetCars)
                 {
                     records.Append($"{elem?.GetDataForSave(_separatorForObject)}{_separatorRecords}");
                 }
-                data.AppendLine($"{record.Key}{_separatorForKeyValue}{records}");
+                data.AppendLine($"{record.Key.Name}{_separatorForKeyValue}{records}");
             }
             if (data.Length == 0)
             {
@@ -186,7 +187,7 @@ namespace AntiAircraftGun.Generics
                             }
                         }
                     }
-                    _zenitStorages.Add(record[0], collection);
+                    _zenitStorages.Add(new AntiAirCraftGunCollectionInfo(record[0],string.Empty), collection);
 
                     str = sr.ReadLine();
                 } while (str != null);

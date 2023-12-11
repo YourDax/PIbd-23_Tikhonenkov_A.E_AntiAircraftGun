@@ -31,26 +31,32 @@ namespace AntiAircraftGun.Generics
             _maxCount = count;
             _places = new List<T?>(count);
         }
+        public void SortSet(IComparer<T?> comparer) => _places.Sort(comparer);
         /// <summary>
         /// Добавление объекта в набор
         /// </summary>
         /// <param name="car">Добавляемый автомобиль</param>
         /// <returns></returns>
-        public bool Insert(T car)
+        public bool Insert(T car, IEqualityComparer<T>? equal = null)
         {
             if (_places.Count == _maxCount)
                 throw new StorageOverflowException(_maxCount);
-            Insert(car, 0);
+            Insert(car, 0, equal);
             return true;
         }
 
-        public bool Insert(T car, int position)
+        public bool Insert(T car, int position, IEqualityComparer<T>? equal = null)
         {
             if (_places.Count == _maxCount)
                 throw new StorageOverflowException(_maxCount);
             if (!(position >= 0 && position <= Count))
                 return false;
-                _places.Insert(position, car);
+            if (equal != null)
+            {
+                if (_places.Contains(car, equal))
+                    throw new ArgumentException(nameof(car));
+            }
+            _places.Insert(position, car);
             return true;
         }
 

@@ -37,7 +37,7 @@ namespace AntiAircraftGun
             listBoxStorages.Items.Clear();
             for (int i = 0; i < _storage.Keys.Count; i++)
             {
-                listBoxStorages.Items.Add(_storage.Keys[i]);
+                listBoxStorages.Items.Add(_storage.Keys[i].Name);
             }
             if (listBoxStorages.Items.Count > 0 && (index == -1 || index
             >= listBoxStorages.Items.Count))
@@ -128,6 +128,11 @@ namespace AntiAircraftGun
                 {
                     Serilog.Log.Warning($"Коллекция {listBoxStorages.SelectedItem.ToString() ?? string.Empty} переполнена");
                     MessageBox.Show(ex.Message);
+                }
+                catch (ArgumentException ex)
+                {
+                    Serilog.Log.Warning($"Добавляемый объект уже существует в коллекции {listBoxStorages.SelectedItem.ToString() ?? string.Empty}");
+                    MessageBox.Show("Добавляемый объект уже сущесвует в коллекции");
                 }
             });
             form.AddEvent(zenitDelegate);
@@ -226,6 +231,7 @@ namespace AntiAircraftGun
                     {
                         listBoxStorages.Items.Add(collection);
                     }
+                    ReloadObjects();
                 }
                 catch (Exception ex)
                 {
@@ -234,6 +240,25 @@ namespace AntiAircraftGun
                     
                 }
             }
+        }
+        private void ButtonSortByType_Click(object sender, EventArgs e) => CompareAntiAirCraftGun(new AntiAirCraftGunCompareByType());
+
+        private void ButtonSortByColor_Click(object sender, EventArgs e) => CompareAntiAirCraftGun(new AntiAirCraftGunCompareByColor());
+
+        private void CompareAntiAirCraftGun(IComparer<BaseDrawingAntiAirCraftGun?> comparer)
+        {
+            if (listBoxStorages.SelectedIndex == -1)
+            {
+                return;
+            }
+            var obj = _storage[listBoxStorages.SelectedItem.ToString() ??
+            string.Empty];
+            if (obj == null)
+            {
+                return;
+            }
+            obj.Sort(comparer);
+            pictureBoxCollection.Image = obj.ShowZenits();
         }
 
     }

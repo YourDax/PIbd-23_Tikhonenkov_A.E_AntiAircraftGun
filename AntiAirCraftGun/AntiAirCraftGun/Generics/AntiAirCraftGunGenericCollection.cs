@@ -36,6 +36,7 @@ namespace AntiAircraftGun.Generics
         /// Набор объектов
         /// </summary>
         private readonly SetGeneric<T> _collection;
+        public void Sort(IComparer<T?> comparer) => _collection.SortSet(comparer);
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -59,7 +60,7 @@ namespace AntiAircraftGun.Generics
         {
             if (obj == null)
                 return false;
-            return collect?._collection.Insert(obj) ?? false;
+            return collect?._collection.Insert(obj, new DrawingAntiAirCraftGunEqutables()) ?? false;
         }
         /// <summary>
         /// Перегрузка оператора вычитания
