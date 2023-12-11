@@ -129,6 +129,11 @@ namespace AntiAircraftGun
                     Serilog.Log.Warning($"Коллекция {listBoxStorages.SelectedItem.ToString() ?? string.Empty} переполнена");
                     MessageBox.Show(ex.Message);
                 }
+                catch (ArgumentException ex)
+                {
+                    Serilog.Log.Warning($"Добавляемый объект уже существует в коллекции {listBoxStorages.SelectedItem.ToString() ?? string.Empty}");
+                    MessageBox.Show("Добавляемый объект уже сущесвует в коллекции");
+                }
             });
             form.AddEvent(zenitDelegate);
         }
