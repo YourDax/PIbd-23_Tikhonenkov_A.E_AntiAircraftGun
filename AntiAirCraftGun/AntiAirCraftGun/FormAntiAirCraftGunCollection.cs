@@ -1,6 +1,8 @@
 ﻿using AntiAircraftGun.DrawingObjects;
+using AntiAircraftGun.Exceptions;
 using AntiAircraftGun.Generics;
 using AntiAircraftGun.MovementStrategy;
+using Microsoft.VisualBasic.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,12 +12,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Serilog;
+
+
 
 namespace AntiAircraftGun
 {
     public partial class FormAntiAirCraftGunCollection : Form
     {
         private readonly AntiAirCraftGunGenericStorage _storage;
+        
         public FormAntiAirCraftGunCollection()
         {
             InitializeComponent();
@@ -59,6 +65,7 @@ namespace AntiAircraftGun
             }
             _storage.AddSet(textBoxStorageName.Text);
             ReloadObjects();
+            Serilog.Log.Information($"Добавлен набор: {textBoxStorageName.Text}");
         }
         /// <summary>
         /// Выбор набора
@@ -85,9 +92,10 @@ namespace AntiAircraftGun
             if (MessageBox.Show($"Удалить объект{ listBoxStorages.SelectedItem}?", "Удаление",
                 MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                _storage.DelSet(listBoxStorages.SelectedItem.ToString()
-                ?? string.Empty);
+                string name = listBoxStorages.SelectedItem.ToString() ?? string.Empty;
+                _storage.DelSet(name);
                 ReloadObjects();
+                Serilog.Log.Information($"Удален набор: {name}");
             }
         }
         
@@ -107,16 +115,19 @@ namespace AntiAircraftGun
             FormAntiAirCraftGunConfig form = new();
             form.Show();
             Action<BaseDrawingAntiAirCraftGun>? zenitDelegate = new((m) => {
-                bool q = (obj + m);
-                if (q)
+                
+                try
                 {
+                    bool q = (obj + m);
                     MessageBox.Show("Объект добавлен");
+                    Serilog.Log.Information($"Добавлен объект в коллекцию {listBoxStorages.SelectedItem.ToString() ?? string.Empty}");
                     m.ChangePictureBoxSize(pictureBoxCollection.Width, pictureBoxCollection.Height);
                     pictureBoxCollection.Image = obj.ShowZenits();
                 }
-                else
+                catch(StorageOverflowException ex) 
                 {
-                    MessageBox.Show("Не удалось добавить объект");
+                    Serilog.Log.Warning($"Коллекция {listBoxStorages.SelectedItem.ToString() ?? string.Empty} переполнена");
+                    MessageBox.Show(ex.Message);
                 }
             });
             form.AddEvent(zenitDelegate);
@@ -137,15 +148,25 @@ namespace AntiAircraftGun
             {
                 return;
             }
-            int pos = Convert.ToInt32(maskedTextBoxNumber.Text);
-            if (obj - pos != null)
+            
+            try
             {
+                int pos = Convert.ToInt32(maskedTextBoxNumber.Text);
+                var q = obj - pos;
                 MessageBox.Show("Объект удален");
+                Serilog.Log.Information($"Удален объект из коллекции {listBoxStorages.SelectedItem.ToString() ?? string.Empty} по номеру {pos}");
                 pictureBoxCollection.Image = obj.ShowZenits();
+                
             }
-            else
+            catch(AntiAirCraftGunNotFoundException ex)
             {
-                MessageBox.Show("Не удалось удалить объект");
+                Serilog.Log.Warning($"Не получилось удалить объект из коллекции {listBoxStorages.SelectedItem.ToString() ?? string.Empty}");
+                MessageBox.Show(ex.Message);
+            }
+            catch (FormatException ex)
+            {
+                Serilog.Log.Warning($"Было введено не число");
+                MessageBox.Show("Введите число");
             }
         }
         
@@ -174,15 +195,16 @@ namespace AntiAircraftGun
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (_storage.SaveData(saveFileDialog.FileName))
+                try
                 {
-                    MessageBox.Show("Сохранение прошло успешно",
-                    "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _storage.SaveData(saveFileDialog.FileName);
+                    MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Serilog.Log.Information($"Файл {saveFileDialog.FileName} успешно сохранен");
                 }
-                else
+                catch(Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "Результат",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Serilog.Log.Warning($"Не удалось сохранить {saveFileDialog.FileName}");
+                    MessageBox.Show($"Не сохранилось: {ex.Message}", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -195,19 +217,21 @@ namespace AntiAircraftGun
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (_storage.LoadData(openFileDialog.FileName))
+                try
                 {
-                    MessageBox.Show("Загрузка прошла успешно",
-                    "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _storage.LoadData(openFileDialog.FileName);
+                    MessageBox.Show("Загрузка прошла успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Serilog.Log.Information($"Файл {openFileDialog.FileName} успешно загружен");
                     foreach (var collection in _storage.Keys)
                     {
                         listBoxStorages.Items.Add(collection);
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не загрузилось", "Результат",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Serilog.Log.Warning("Не удалось загрузить");
+                    MessageBox.Show($"Не загрузилось: {ex.Message}", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
                 }
             }
         }

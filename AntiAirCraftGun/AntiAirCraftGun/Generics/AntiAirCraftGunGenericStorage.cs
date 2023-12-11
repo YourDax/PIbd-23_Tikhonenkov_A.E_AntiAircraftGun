@@ -75,7 +75,7 @@ namespace AntiAircraftGun.Generics
         public void DelSet(string name)
         {
             // TODO: Прописать логику для удаления набора
-            if (_zenitStorages.ContainsKey(name) == null)
+            if (!_zenitStorages.ContainsKey(name))
             {
                 return;
             }
@@ -127,7 +127,7 @@ namespace AntiAircraftGun.Generics
             }
             if (data.Length == 0)
             {
-                return false;
+                throw new Exception("Невалидная операция, нет данных для сохранения");
             }
             string toWrite = $"CarStorage{Environment.NewLine}{data}";
             var strs = toWrite.Split(new char[] { '\n', '\r' },  StringSplitOptions.RemoveEmptyEntries);
@@ -149,7 +149,7 @@ namespace AntiAircraftGun.Generics
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new IOException("Файл не найден");
             }
             using (StreamReader sr = new(filename))
             {
@@ -157,11 +157,11 @@ namespace AntiAircraftGun.Generics
                 var strs = str.Split(new char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
                 if (strs == null || strs.Length == 0)
                 {
-                    return false;
+                    throw new IOException("Нет данных для загрузки");
                 }
                 if (!strs[0].StartsWith("CarStorage"))
                 {
-                    return false;
+                    throw new IOException("Неверный формат данных");
                 }
                 _zenitStorages.Clear();
                 do
@@ -182,7 +182,7 @@ namespace AntiAircraftGun.Generics
                         {
                             if (!(collection + zenit))
                             {
-                                return false;
+                                throw new Exception("Ошибка добавления в коллекцию");
                             }
                         }
                     }
@@ -192,7 +192,7 @@ namespace AntiAircraftGun.Generics
                 } while (str != null);
             }
             return true;
-        }
+        }       
     }
 }
     

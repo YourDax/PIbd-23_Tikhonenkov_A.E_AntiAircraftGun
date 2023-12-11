@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AntiAircraftGun.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,16 +39,18 @@ namespace AntiAircraftGun.Generics
         public bool Insert(T car)
         {
             if (_places.Count == _maxCount)
-                return false;
+                throw new StorageOverflowException(_maxCount);
             Insert(car, 0);
             return true;
         }
 
         public bool Insert(T car, int position)
         {
-            if (!(position >= 0 && position <= Count && _places.Count < _maxCount))
+            if (_places.Count == _maxCount)
+                throw new StorageOverflowException(_maxCount);
+            if (!(position >= 0 && position <= Count))
                 return false;
-            _places.Insert(position, car);
+                _places.Insert(position, car);
             return true;
         }
 
@@ -60,9 +63,9 @@ namespace AntiAircraftGun.Generics
         {
             // Проверка позиции
             if (position < 0 || position >= Count)
-                return false;
+                throw new AntiAirCraftGunNotFoundException(position);
 
-            
+
             _places.RemoveAt(position);
             return true;
         }

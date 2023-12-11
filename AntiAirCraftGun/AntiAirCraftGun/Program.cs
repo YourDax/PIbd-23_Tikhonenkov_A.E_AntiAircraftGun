@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Configuration;
+using Serilog;
 namespace AntiAircraftGun
 {
 	internal static class Program
@@ -8,9 +10,11 @@ namespace AntiAircraftGun
 		[STAThread]
 		static void Main()
 		{
-			// To customize application configuration such as set high DPI settings or default font,
-			// see https://aka.ms/applicationconfiguration.
-			ApplicationConfiguration.Initialize();
+            
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(new ConfigurationBuilder().AddJsonFile("serilog.json").Build())
+                .CreateLogger();
+            ApplicationConfiguration.Initialize();
 			Application.Run(new FormAntiAirCraftGunCollection());
 		}
 	}

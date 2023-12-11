@@ -70,8 +70,7 @@ namespace AntiAircraftGun.Generics
         public static T? operator -(AntiAirCraftGunGenericCollection<T, U> collect, int pos)
         {
             T? obj = collect._collection.Get(pos);
-            if (obj != null)
-                collect._collection.Remove(pos);
+            collect._collection.Remove(pos);
             return obj;
         }
         
