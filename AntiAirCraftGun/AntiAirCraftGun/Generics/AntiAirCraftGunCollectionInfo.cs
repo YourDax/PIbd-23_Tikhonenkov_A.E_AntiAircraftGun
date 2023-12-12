@@ -18,6 +18,7 @@ namespace AntiAircraftGun.Generics
         public bool Equals(AntiAirCraftGunCollectionInfo? other)
         {
             return Name == other.Name;
+            throw new NotImplementedException();
         }
 
         public override int GetHashCode()
